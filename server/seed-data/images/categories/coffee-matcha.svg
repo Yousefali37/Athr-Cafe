@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="640" viewBox="0 0 900 640">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e9dcc4"/>
+      <stop offset="100%" stop-color="#d3bd94"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.55">
+      <stop offset="0%" stop-color="rgba(247,241,230,0.55)"/>
+      <stop offset="100%" stop-color="rgba(247,241,230,0)"/>
+    </radialGradient>
+    <g id="star8"><polygon points="0.0,-46.0 8.1,-19.5 32.5,-32.5 19.5,-8.1 46.0,0.0 19.5,8.1 32.5,32.5 8.1,19.5 0.0,46.0 -8.1,19.5 -32.5,32.5 -19.5,8.1 -46.0,0.0 -19.5,-8.1 -32.5,-32.5 -8.1,-19.5"/></g>
+  </defs>
+  <rect width="900" height="640" fill="url(#bg)"/>
+  <circle cx="0" cy="0" r="4" fill="rgba(247,241,230,0.16)"/><circle cx="873" cy="237" r="11" fill="rgba(247,241,230,0.16)"/><circle cx="846" cy="27" r="9" fill="rgba(247,241,230,0.16)"/><circle cx="819" cy="264" r="7" fill="rgba(247,241,230,0.16)"/><circle cx="792" cy="54" r="5" fill="rgba(247,241,230,0.16)"/><circle cx="765" cy="291" r="12" fill="rgba(247,241,230,0.16)"/><circle cx="738" cy="81" r="10" fill="rgba(247,241,230,0.16)"/><circle cx="711" cy="318" r="8" fill="rgba(247,241,230,0.16)"/><circle cx="684" cy="108" r="6" fill="rgba(247,241,230,0.16)"/><circle cx="657" cy="345" r="4" fill="rgba(247,241,230,0.16)"/><circle cx="630" cy="134" r="11" fill="rgba(247,241,230,0.16)"/><circle cx="603" cy="372" r="9" fill="rgba(247,241,230,0.16)"/><circle cx="576" cy="161" r="7" fill="rgba(247,241,230,0.16)"/><circle cx="549" cy="399" r="5" fill="rgba(247,241,230,0.16)"/>
+  <path d="M252 588.8000000000001 v-192 a198 198 0 0 1 396 0 v192 z" fill="rgba(30,26,21,0.10)"/>
+  <rect width="900" height="640" fill="url(#glow)"/>
+  <g transform="translate(450 320)">
+    <circle r="229.33333333333331" fill="rgba(247,241,230,0.72)"/>
+    <circle r="229.33333333333331" fill="none" stroke="#9c4a2a" stroke-width="5.333333333333333" opacity="0.55"/>
+    <use href="#star8" fill="none" stroke="#9c4a2a" stroke-width="4.266666666666667" opacity="0.4" transform="translate(0 0) scale(3.333333333333333)"/>
+    <g transform="scale(3.0666666666666664)" fill="none" stroke="#1e1a15" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-34 -14 h60 v26 a30 30 0 0 1 -60 0 z M26 -8 h10 a12 12 0 0 1 0 24 h-10 M-24 -30 c0 -8 8 -8 8 -16 M-8 -30 c0 -8 8 -8 8 -16"/>
+    </g>
+  </g>
+  
+  <rect x="14" y="14" width="872" height="612" fill="none" stroke="rgba(247,241,230,0.55)" stroke-width="2" rx="6"/>
+</svg>

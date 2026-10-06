@@ -1,0 +1,268 @@
+{
+  "name": "Athr Cafe",
+  "settings": {
+    "site_name": "Athr Cafe",
+    "logo": "/images/logo.svg",
+    "hero_image": "/images/hero.svg",
+    "hero_title": "Athr Cafe",
+    "hero_subtitle": "Modern Qatari fusion, specialty coffee and Japanese-style desserts — in the heart of Souq Waqif, Doha.",
+    "today_badge": "Today's Special",
+    "contact_address": "Souq Waqif, Souq Asiri, Hotel, 23095, Doha, Qatar",
+    "contact_phone": "+974 7739 7337",
+    "contact_email": "hello@athrcafe.qa",
+    "contact_hours": "Daily · 08:00 – 22:00",
+    "contact_map": "https://www.google.com/maps?q=Souq%20Waqif%2C%20Doha%2C%20Qatar&output=embed",
+    "social_instagram": "https://www.instagram.com/athr.cafe/",
+    "social_tiktok": "",
+    "social_linktree": "https://linktr.ee/Athrcafe",
+    "social_talabat": "https://www.talabat.com/qatar/athr-modern-cafe",
+    "snoonu": "https://apps.snoonu.com/",
+    "footer_text": "Modern Qatari, every day.",
+    "footer_background": "/images/footer-bg.svg"
+  },
+  "today_product_id": 101,
+  "gallery": [
+    {
+      "src": "/images/gallery/athr-1.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-2.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-3.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-4.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-5.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-6.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-7.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-8.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-9.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Breakfast",
+      "parent": null,
+      "sort_order": 1,
+      "description": "Served all day, from first light to late lunch.",
+      "image": "/images/categories/breakfast.svg",
+      "products": []
+    },
+    {
+      "id": 2,
+      "name": "Coffee & Matcha",
+      "parent": null,
+      "sort_order": 2,
+      "description": "Specialty beans, house-ground cardamom and ceremonial matcha.",
+      "image": "/images/categories/coffee-matcha.svg",
+      "products": []
+    },
+    {
+      "id": 3,
+      "name": "Desserts",
+      "parent": null,
+      "sort_order": 3,
+      "description": "Japanese-style cakes with a Qatari heart.",
+      "image": "/images/categories/desserts.svg",
+      "products": [
+        {
+          "id": 301,
+          "name": "Arabic Coffee Tiramisu",
+          "description": "Mascarpone layered with qahwa-soaked sponge and cocoa dust.",
+          "price": 32,
+          "image": "/images/products/301-arabic-coffee-tiramisu.svg",
+          "sort_order": 1
+        },
+        {
+          "id": 302,
+          "name": "Zafron & Dates Japanese Cheesecake",
+          "description": "Cloud-soft cheesecake folded with saffron caramel and soft dates.",
+          "price": 34,
+          "image": "/images/products/302-zafron-dates-japanese-cheesecake.svg",
+          "sort_order": 2
+        },
+        {
+          "id": 303,
+          "name": "Carrot Cake",
+          "description": "Spiced carrot sponge with cream cheese frosting and toasted walnuts.",
+          "price": 28,
+          "image": "/images/products/303-carrot-cake.svg",
+          "sort_order": 3
+        },
+        {
+          "id": 304,
+          "name": "Eclairs",
+          "description": "Choux pastry piped with vanilla cream and glazed dark chocolate.",
+          "price": 26,
+          "image": "/images/products/304-eclairs.svg",
+          "sort_order": 4
+        },
+        {
+          "id": 305,
+          "name": "Pistachio Cake",
+          "description": "Moist pistachio sponge with rose cream and crushed pistachios.",
+          "price": 30,
+          "image": "/images/products/305-pistachio-cake.svg",
+          "sort_order": 5
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Sandwiches",
+      "parent": null,
+      "sort_order": 4,
+      "description": "Toasted, stacked and made to order.",
+      "image": "/images/categories/sandwiches.svg",
+      "products": [
+        {
+          "id": 401,
+          "name": "Chicken Pesto Sandwich",
+          "description": "Roast chicken, basil pesto, mozzarella and rocket on sourdough.",
+          "price": 34,
+          "image": "/images/products/401-chicken-pesto-sandwich.svg",
+          "sort_order": 1
+        },
+        {
+          "id": 402,
+          "name": "Halloumi & Za'atar Toastie",
+          "description": "Grilled halloumi, za'atar and tomato jam, pressed until golden.",
+          "price": 30,
+          "image": "/images/products/402-halloumi-zaatar-toastie.svg",
+          "sort_order": 2
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "All Day",
+      "parent": 1,
+      "sort_order": 1,
+      "description": "",
+      "image": "",
+      "products": [
+        {
+          "id": 101,
+          "name": "Athr Croissant Benedict",
+          "description": "Butter croissant, poached eggs, silky hollandaise and slow-roasted tomatoes.",
+          "price": 40,
+          "image": "/images/products/101-croissant-benedict.svg",
+          "sort_order": 1
+        },
+        {
+          "id": 102,
+          "name": "Qatari French Toast",
+          "description": "Thick brioche soaked in date syrup and cardamom cream, seared to order.",
+          "price": 38,
+          "image": "/images/products/102-qatari-french-toast.svg",
+          "sort_order": 2
+        },
+        {
+          "id": 103,
+          "name": "Balaleet with Omelette",
+          "description": "Sweet vermicelli with saffron and rose water, topped with a savoury omelette.",
+          "price": 36,
+          "image": "/images/products/103-balaleet-omelette.svg",
+          "sort_order": 3
+        },
+        {
+          "id": 104,
+          "name": "Eggs & Tomatoes",
+          "description": "Shakshuka-style eggs, fresh tomatoes, za'atar and warm khubz.",
+          "price": 32,
+          "image": "/images/products/104-eggs-tomatoes.svg",
+          "sort_order": 4
+        },
+        {
+          "id": 105,
+          "name": "The Athr Set Menu",
+          "description": "Croissant benedict, balaleet, labneh, dates and two drinks — the full table.",
+          "price": 75,
+          "image": "/images/products/105-athr-set-menu.svg",
+          "sort_order": 5
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Hot",
+      "parent": 2,
+      "sort_order": 1,
+      "description": "",
+      "image": "",
+      "products": [
+        {
+          "id": 201,
+          "name": "Signature Matcha Latte",
+          "description": "Ceremonial matcha whisked with silky milk and a touch of Qatari honey.",
+          "price": 28,
+          "image": "/images/products/201-signature-matcha-latte.svg",
+          "sort_order": 1
+        },
+        {
+          "id": 202,
+          "name": "Saffron Arabic Coffee",
+          "description": "Light-roasted beans, cardamom and saffron — served the traditional way.",
+          "price": 22,
+          "image": "/images/products/202-saffron-arabic-coffee.svg",
+          "sort_order": 2
+        },
+        {
+          "id": 203,
+          "name": "Athr Flat White",
+          "description": "Double ristretto with velvety steamed milk and latte art.",
+          "price": 20,
+          "image": "/images/products/203-athr-flat-white.svg",
+          "sort_order": 3
+        },
+        {
+          "id": 204,
+          "name": "Cardamom Latte",
+          "description": "Espresso and steamed milk spiced with freshly ground cardamom.",
+          "price": 21,
+          "image": "/images/products/204-cardamom-latte.svg",
+          "sort_order": 4
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Cold",
+      "parent": 2,
+      "sort_order": 2,
+      "description": "",
+      "image": "",
+      "products": [
+        {
+          "id": 205,
+          "name": "Iced Spanish Latte",
+          "description": "Chilled espresso, condensed milk and ice — our afternoon favourite.",
+          "price": 24,
+          "image": "/images/products/205-iced-spanish-latte.svg",
+          "sort_order": 1
+        }
+      ]
+    }
+  ]
+}

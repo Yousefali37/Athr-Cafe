@@ -1,0 +1,210 @@
+import { useEffect, useState } from 'react'
+import { adminApi, isUnauthorized } from '../api.js'
+import ImageInput from './ImageInput.jsx'
+
+function Field({ label, children }) {
+  return (
+    <label className="field">
+      <span className="span-label">{label}</span>
+      {children}
+    </label>
+  )
+}
+
+export default function AdminContent({ token, onUnauthorized }) {
+  const [site, setSite] = useState(null)
+  const [menu, setMenu] = useState([])
+  const [saved, setSaved] = useState(false)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    let live = true
+    Promise.all([adminApi.getSite(token), adminApi.getMenu(token)])
+      .then(([s, m]) => {
+        if (live) {
+          setSite(s)
+          setMenu(m)
+        }
+      })
+      .catch((e) => {
+        if (live) {
+          if (isUnauthorized(e)) onUnauthorized?.()
+          else setError(e.message)
+        }
+      })
+    return () => {
+      live = false
+    }
+  }, [token, onUnauthorized])
+
+  if (error) return <p className="form-status err">{error}</p>
+  if (!site) return <p className="loading">Loading content…</p>
+
+  const foods = []
+  for (const top of menu) {
+    for (const sub of top.subcategories || []) {
+      for (const p of sub.products) foods.push({ ...p, group: `${top.name} · ${sub.name}` })
+    }
+    for (const p of top.products || []) foods.push({ ...p, group: top.name })
+  }
+
+  const set = (key, value) => setSite((s) => ({ ...s, [key]: value }))
+
+  // gallery helpers
+  const setGallery = (next) => {
+    set('gallery', next)
+  }
+  const updateGalleryItem = (i, patch) =>
+    setGallery(site.gallery.map((g, idx) => (idx === i ? { ...g, ...patch } : g)))
+  const moveGallery = (i, dir) => {
+    const next = [...site.gallery]
+    const [item] = next.splice(i, 1)
+    next.splice(i + dir, 0, item)
+    setGallery(next)
+  }
+  const removeGalleryItem = (i) => setGallery(site.gallery.filter((_, idx) => idx !== i))
+  const addGalleryItem = () => setGallery([...site.gallery, { src: '', caption: '' }])
+
+  const save = async () => {
+    setSaved(false)
+    try {
+      await adminApi.saveSite(token, site)
+      setSaved(true)
+      setTimeout(() => setSaved(false), 2200)
+    } catch (err) {
+      if (isUnauthorized(err)) onUnauthorized?.()
+      else setError(err.message)
+    }
+  }
+
+  return (
+    <div className="admin-pane">
+      <div className="pane-head">
+        <h2>Page content</h2>
+        <button type="button" className="btn btn-primary" onClick={save}>
+          {saved ? 'Saved ✓' : 'Save changes'}
+        </button>
+      </div>
+
+      <h3 className="block-title">Hero section</h3>
+      <div className="grid-2">
+        <Field label="Site name">
+          <input value={site.site_name || ''} onChange={(e) => set('site_name', e.target.value)} />
+        </Field>
+        <ImageInput
+          label="Logo"
+          token={token}
+          value={site.logo}
+          onChange={(v) => set('logo', v)}
+          onUnauthorized={onUnauthorized}
+        />
+        <Field label="Hero title">
+          <input value={site.hero_title || ''} onChange={(e) => set('hero_title', e.target.value)} />
+        </Field>
+        <Field label="Hero subtitle">
+          <textarea rows={2} value={site.hero_subtitle || ''} onChange={(e) => set('hero_subtitle', e.target.value)} />
+        </Field>
+      </div>
+      <ImageInput label="Hero background image" token={token} value={site.hero_image} onChange={(v) => set('hero_image', v)} onUnauthorized={onUnauthorized} />
+
+      <h3 className="block-title">Today's special</h3>
+      <div className="grid-2">
+        <Field label="Badge text">
+          <input value={site.today_badge || ''} onChange={(e) => set('today_badge', e.target.value)} />
+        </Field>
+        <Field label="Product to feature">
+          <select
+            value={site.today_product_id || ''}
+            onChange={(e) => set('today_product_id', e.target.value ? Number(e.target.value) : null)}
+          >
+            <option value="">— select a product —</option>
+            {foods.map((f) => (
+              <option key={f.id} value={f.id}>
+                {f.name} ({f.group})
+              </option>
+            ))}
+          </select>
+        </Field>
+      </div>
+
+      <h3 className="block-title">Gallery</h3>
+      {site.gallery.length === 0 ? (
+        <p className="muted">No gallery images yet.</p>
+      ) : (
+        <div className="gallery-admin">
+          {site.gallery.map((g, i) => (
+            <div className="gallery-admin-item" key={i}>
+              <div className="gallery-admin-img">
+                {g.src ? <img src={g.src} alt="" /> : <span>No image</span>}
+              </div>
+              <input
+                placeholder="Caption"
+                value={g.caption || ''}
+                onChange={(e) => updateGalleryItem(i, { caption: e.target.value })}
+              />
+              <input
+                placeholder="Image URL"
+                value={g.src || ''}
+                onChange={(e) => updateGalleryItem(i, { src: e.target.value })}
+              />
+              <div className="row-actions">
+                <button type="button" className="btn btn-xs" onClick={() => moveGallery(i, -1)} disabled={i === 0}>↑</button>
+                <button type="button" className="btn btn-xs" onClick={() => moveGallery(i, 1)} disabled={i === site.gallery.length - 1}>↓</button>
+                <button type="button" className="btn btn-xs btn-danger" onClick={() => removeGalleryItem(i)}>Remove</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      <button type="button" className="btn btn-outline" onClick={addGalleryItem}>+ Add gallery image</button>
+
+      <h3 className="block-title">Contact</h3>
+      <div className="grid-2">
+        <Field label="Address">
+          <input value={site.contact_address || ''} onChange={(e) => set('contact_address', e.target.value)} />
+        </Field>
+        <Field label="Phone">
+          <input value={site.contact_phone || ''} onChange={(e) => set('contact_phone', e.target.value)} />
+        </Field>
+        <Field label="Email">
+          <input value={site.contact_email || ''} onChange={(e) => set('contact_email', e.target.value)} />
+        </Field>
+        <Field label="Opening hours">
+          <input value={site.contact_hours || ''} onChange={(e) => set('contact_hours', e.target.value)} />
+        </Field>
+        <Field label="Google Maps embed URL">
+          <input placeholder="https://www.google.com/maps?q=…&output=embed" value={site.contact_map || ''} onChange={(e) => set('contact_map', e.target.value)} />
+        </Field>
+        <Field label="Instagram URL">
+          <input value={site.social_instagram || ''} onChange={(e) => set('social_instagram', e.target.value)} />
+        </Field>
+        <Field label="TikTok URL">
+          <input value={site.social_tiktok || ''} onChange={(e) => set('social_tiktok', e.target.value)} />
+        </Field>
+        <Field label="Linktree URL">
+          <input value={site.social_linktree || ''} onChange={(e) => set('social_linktree', e.target.value)} />
+        </Field>
+        <Field label="Talabat URL">
+          <input value={site.social_talabat || ''} onChange={(e) => set('social_talabat', e.target.value)} />
+        </Field>
+        <Field label="Snoonu URL">
+          <input value={site.snoonu || ''} onChange={(e) => set('snoonu', e.target.value)} />
+        </Field>
+      </div>
+
+      <h3 className="block-title">Footer</h3>
+      <div className="grid-2">
+        <Field label="Footer text">
+          <input value={site.footer_text || ''} onChange={(e) => set('footer_text', e.target.value)} />
+        </Field>
+      </div>
+      <ImageInput label="Footer background" token={token} value={site.footer_background} onChange={(v) => set('footer_background', v)} onUnauthorized={onUnauthorized} />
+
+      <div className="pane-foot">
+        <button type="button" className="btn btn-primary" onClick={save}>
+          {saved ? 'Saved ✓' : 'Save changes'}
+        </button>
+      </div>
+    </div>
+  )
+}

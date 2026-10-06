@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1200" viewBox="0 0 1000 1200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4e6cd"/>
+      <stop offset="100%" stop-color="#dfbb8b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.55">
+      <stop offset="0%" stop-color="rgba(247,241,230,0.55)"/>
+      <stop offset="100%" stop-color="rgba(247,241,230,0)"/>
+    </radialGradient>
+    <g id="star8"><polygon points="0.0,-46.0 8.1,-19.5 32.5,-32.5 19.5,-8.1 46.0,0.0 19.5,8.1 32.5,32.5 8.1,19.5 0.0,46.0 -8.1,19.5 -32.5,32.5 -19.5,8.1 -46.0,0.0 -19.5,-8.1 -32.5,-32.5 -8.1,-19.5"/></g>
+  </defs>
+  <rect width="1000" height="1200" fill="url(#bg)"/>
+  <circle cx="0" cy="0" r="4" fill="rgba(247,241,230,0.16)"/><circle cx="970" cy="445" r="11" fill="rgba(247,241,230,0.16)"/><circle cx="940" cy="50" r="9" fill="rgba(247,241,230,0.16)"/><circle cx="910" cy="496" r="7" fill="rgba(247,241,230,0.16)"/><circle cx="880" cy="101" r="5" fill="rgba(247,241,230,0.16)"/><circle cx="850" cy="546" r="12" fill="rgba(247,241,230,0.16)"/><circle cx="820" cy="151" r="10" fill="rgba(247,241,230,0.16)"/><circle cx="790" cy="596" r="8" fill="rgba(247,241,230,0.16)"/><circle cx="760" cy="202" r="6" fill="rgba(247,241,230,0.16)"/><circle cx="730" cy="647" r="4" fill="rgba(247,241,230,0.16)"/><circle cx="700" cy="252" r="11" fill="rgba(247,241,230,0.16)"/><circle cx="670" cy="697" r="9" fill="rgba(247,241,230,0.16)"/><circle cx="640" cy="302" r="7" fill="rgba(247,241,230,0.16)"/><circle cx="610" cy="748" r="5" fill="rgba(247,241,230,0.16)"/>
+  <path d="M280 1104 v-360 a220 220 0 0 1 440 0 v360 z" fill="rgba(30,26,21,0.10)"/>
+  <rect width="1000" height="1200" fill="url(#glow)"/>
+  <g transform="translate(500 528)">
+    <circle r="358.33333333333337" fill="rgba(247,241,230,0.72)"/>
+    <circle r="358.33333333333337" fill="none" stroke="#9c4a2a" stroke-width="8.333333333333334" opacity="0.55"/>
+    <use href="#star8" fill="none" stroke="#9c4a2a" stroke-width="6.666666666666668" opacity="0.4" transform="translate(0 0) scale(5.208333333333334)"/>
+    <g transform="scale(4.791666666666667)" fill="none" stroke="#1e1a15" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-30 6 c-6 -20 4 -34 22 -36 c-8 -8 -6 -16 2 -20 c-2 10 6 12 10 6 c2 10 12 12 16 4 c4 10 14 8 16 -2 c6 8 4 20 -6 26 c10 8 10 22 0 28 c-12 8 -44 8 -60 -6 z M14 -30 c14 -6 26 -2 34 8"/>
+    </g>
+  </g>
+  <text x="500" y="1113" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="60" letter-spacing="10" fill="#1e1a15" opacity="0.9">ATHR CAFE</text>
+  <text x="500" y="1164" text-anchor="middle" font-family="Georgia, serif" font-size="30" letter-spacing="6" fill="#9c4a2a" opacity="0.95">SOUQ WAQIF · DOHA</text>
+  <rect x="14" y="14" width="972" height="1172" fill="none" stroke="rgba(247,241,230,0.55)" stroke-width="2" rx="6"/>
+</svg>
