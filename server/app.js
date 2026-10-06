@@ -69,16 +69,10 @@ if (fs.existsSync(distDir)) {
   })
 }
 
-// ---------- seed imagery (/images → server/seed-data/images + public/images) ----------
-const seedImgs = path.join(__dirname, 'seed-data', 'images')
-if (fs.existsSync(seedImgs)) {
-  app.use('/images', express.static(seedImgs, { maxAge: '7d' }))
-}
-// gallery photos live in public/images/gallery (served here too, since Vite
-// proxies /images to this server in dev)
-const publicDir = path.join(__dirname, '..', 'public')
-if (fs.existsSync(publicDir)) {
-  app.use('/images', express.static(publicDir, { maxAge: '7d' }))
+// ---------- imagery (/images → public/images; on Vercel served from dist) ----------
+const publicImages = path.join(__dirname, '..', 'public', 'images')
+if (fs.existsSync(publicImages)) {
+  app.use('/images', express.static(publicImages, { maxAge: '7d' }))
 }
 
 app.use((req, res) => res.status(404).json({ error: 'Not found' }))
