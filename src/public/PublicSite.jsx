@@ -8,6 +8,7 @@ import Hero from './components/Hero.jsx'
 import TodaysMenu from './components/TodaysMenu.jsx'
 import MenuSection from './components/MenuSection.jsx'
 import Gallery from './components/Gallery.jsx'
+import InstagramFeed from './components/InstagramFeed.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import './site.css'
@@ -108,6 +109,7 @@ export default function PublicSite() {
               onSelect={setSelection}
             />
             <Gallery site={site} />
+            <InstagramFeed site={site} />
             <Contact site={site} />
           </main>
           <Footer site={site} />

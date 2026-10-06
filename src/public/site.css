@@ -1280,6 +1280,50 @@
   transform: rotate(90deg);
 }
 
+/* ---------- instagram feed ---------- */
+.insta-section {
+  padding: 100px 0 40px;
+  background: var(--paper);
+}
+.insta-section .section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.insta-follow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+.insta-follow svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: start;
+  margin-top: 60px;
+}
+.insta-card {
+  min-width: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(30, 26, 21, 0.08);
+}
+.insta-card .instagram-media {
+  margin: 0 auto !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  border-radius: 18px;
+}
+
 /* ---------- contact ---------- */
 .contact-section {
   padding: 110px 0 60px;
@@ -1593,6 +1637,9 @@ a.info-value:hover {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .insta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .contact-grid {
     grid-template-columns: 1fr;
   }
@@ -1654,6 +1701,14 @@ a.info-value:hover {
   .gallery-grid {
     grid-template-columns: 1fr 1fr;
     gap: 14px;
+  }
+  .insta-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .insta-section .section-head {
+    justify-content: center;
+    text-align: center;
   }
   .gallery-tile-2 {
     grid-row: auto;
