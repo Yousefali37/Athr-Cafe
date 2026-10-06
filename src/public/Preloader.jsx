@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { EASE } from './motion.js'
-import LogoMark from './components/LogoMark.jsx'
 
 const STEPS = ['grinding', 'brewing', 'plating', 'serving']
 const TICKS = Array.from({ length: 60 })
@@ -53,9 +52,7 @@ export default function Preloader({ onDone }) {
       <div className="preloader-inner">
         <div className="preloader-brandbar">
           <div className="preloader-brand">
-            <span className="brand-mark">
-              <LogoMark />
-            </span>
+            <img className="brand-logo" src="/logo.webp" alt="Athr Cafe" />
             <div className="preloader-brand-text">
               <span className="preloader-name">ATHR</span>
               <span className="preloader-tagline">Modern Qatari, every day.</span>

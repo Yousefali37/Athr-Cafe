@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import LogoMark from './LogoMark.jsx'
 
 const SOCIALS = [
   { key: 'instagram', label: 'Instagram', get: (s) => s.social_instagram },
@@ -64,9 +63,7 @@ export default function Footer({ site }) {
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="brand-mark">
-              <LogoMark />
-            </span>
+            <img className="brand-logo" src="/logo.webp" alt={site.site_name || 'Athr Cafe'} />
             <span className="brand-name">{site.site_name || 'Athr Cafe'}</span>
             <p className="footer-text">{site.footer_text || 'Modern Qatari, every day.'}</p>
 

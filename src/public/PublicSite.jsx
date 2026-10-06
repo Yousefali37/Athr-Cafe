@@ -69,7 +69,7 @@ export default function PublicSite() {
     return (
       <div className="boot-loading">
         <div className="boot-logo">
-          <span>A</span>
+          <img src="/logo.webp" alt="Athr Cafe" />
         </div>
         <p>Setting the table…</p>
       </div>
