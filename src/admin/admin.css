@@ -660,3 +660,21 @@ textarea {
     padding: 8px 12px;
   }
 }
+/* ---------- floating save button ---------- */
+.admin-save-fab {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 70;
+  padding: 16px 28px;
+  box-shadow: 0 14px 34px rgba(156, 74, 42, 0.42), 0 6px 18px rgba(30, 26, 21, 0.25);
+}
+
+@media (max-width: 760px) {
+  .admin-save-fab {
+    right: 16px;
+    bottom: 16px;
+    padding: 13px 20px;
+    font-size: 14px;
+  }
+}

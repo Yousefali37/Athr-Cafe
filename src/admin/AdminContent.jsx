@@ -134,9 +134,6 @@ export default function AdminContent({ token, onUnauthorized }) {
     <div className="admin-pane">
       <div className="pane-head">
         <h2>Page content</h2>
-        <button type="button" className="btn btn-primary" onClick={save}>
-          {saved ? 'Saved ✓' : 'Save changes'}
-        </button>
       </div>
 
       <h3 className="block-title">Hero section</h3>
@@ -311,11 +308,9 @@ export default function AdminContent({ token, onUnauthorized }) {
       </div>
       <ImageInput label="Footer background" token={token} value={site.footer_background} onChange={(v) => set('footer_background', v)} onUnauthorized={onUnauthorized} />
 
-      <div className="pane-foot">
-        <button type="button" className="btn btn-primary" onClick={save}>
-          {saved ? 'Saved ✓' : 'Save changes'}
-        </button>
-      </div>
+      <button type="button" className="btn btn-primary admin-save-fab" onClick={save}>
+        {saved ? 'Saved ✓' : 'Save changes'}
+      </button>
     </div>
   )
 }

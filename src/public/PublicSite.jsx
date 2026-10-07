@@ -15,7 +15,13 @@ import './site.css'
 export default function PublicSite() {
   const [site, setSite] = useState(null)
   const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(() => {
+    try {
+      return sessionStorage.getItem('athr-preloaded') !== '1'
+    } catch {
+      return true
+    }
+  })
   const [selection, setSelection] = useState({ topId: null, subId: null }) // tree selection (both null = full menu)
   const [focusId, setFocusId] = useState(null) // product id to highlight
   const [search, setSearch] = useState('')
@@ -53,7 +59,14 @@ export default function PublicSite() {
     return () => clearTimeout(t)
   }, [focusId])
 
-  const finishLoad = useCallback(() => setLoading(false), [])
+  const finishLoad = useCallback(() => {
+    try {
+      sessionStorage.setItem('athr-preloaded', '1')
+    } catch {
+      /* ignore */
+    }
+    setLoading(false)
+  }, [])
 
   if (error) {
     return (
