@@ -5,13 +5,13 @@ import { fileURLToPath } from 'node:url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-const DEFAULT_SRC = path.join(__dirname, 'seed-data', 'athr-menu.json')
+const DEFAULT_SRC = path.join(__dirname, 'seed-data', 'athr-menu-talabat.json')
 
 export function loadMenuData(src) {
   const file = src || process.env.SEED_SOURCE || DEFAULT_SRC
   if (!fs.existsSync(file)) {
     throw new Error(
-      `Seed data not found at: ${file}. Make sure server/seed-data/athr-menu.json exists or set SEED_SOURCE.`,
+      `Seed data not found at: ${file}. Make sure server/seed-data/athr-menu-talabat.json exists or set SEED_SOURCE.`,
     )
   }
   return JSON.parse(fs.readFileSync(file, 'utf8'))

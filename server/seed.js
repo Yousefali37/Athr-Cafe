@@ -1,5 +1,5 @@
 /**
- * CLI seeder — re-seeds the database from server/seed-data/athr-menu.json.
+ * CLI seeder — re-seeds the database from server/seed-data/athr-menu-talabat.json.
  *
  * Usage:
  *   node server/seed.js            # skip if already seeded

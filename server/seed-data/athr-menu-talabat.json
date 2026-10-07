@@ -1,4 +1,64 @@
 {
+  "name": "Athr Cafe",
+  "settings": {
+    "site_name": "Athr Cafe",
+    "logo": "/logo.webp",
+    "hero_image": "/images/hero.svg",
+    "hero_title": "Athr Cafe",
+    "hero_subtitle": "Modern Qatari fusion, specialty coffee and Japanese-style desserts — in the heart of Souq Waqif, Doha.",
+    "today_badge": "Today's Special",
+    "contact_address": "Souq Waqif, Souq Asiri, Hotel, 23095, Doha, Qatar",
+    "contact_phone": "+974 7739 7337",
+    "contact_email": "hello@athrcafe.qa",
+    "contact_hours": "Daily · 08:00 – 22:00",
+    "contact_map": "https://www.google.com/maps?q=Souq%20Waqif%2C%20Doha%2C%20Qatar&output=embed",
+    "social_instagram": "https://www.instagram.com/athr.cafe/",
+    "social_tiktok": "",
+    "social_linktree": "https://linktr.ee/Athrcafe",
+    "social_talabat": "https://www.talabat.com/qatar/athr-modern-cafe",
+    "snoonu": "https://apps.snoonu.com/",
+    "footer_text": "Modern Qatari, every day.",
+    "footer_background": "/images/footer-bg.svg"
+  },
+  "today_product_id": 100,
+  "gallery": [
+    {
+      "src": "/images/gallery/athr-1.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-2.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-3.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-4.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-5.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-6.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-7.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-8.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    },
+    {
+      "src": "/images/gallery/athr-9.jpg",
+      "caption": "Athr Cafe · Souq Waqif"
+    }
+  ],
   "categories": [
     {
       "id": 1,
@@ -14,7 +74,7 @@
           "name": "Muhammara Egg Toast",
           "description": "Sourdough toast with Qatari-style roasted peppers topped with cream and baby rocket finished with scrambled eggs on top",
           "price": 34,
-          "image": "/images/talabat/000.jpg",
+          "image": "/images/talabat/000_Muhammara_Egg_Toast.jpg",
           "sort_order": 1,
           "active": true
         },
@@ -24,7 +84,7 @@
           "name": "Avocado Toast",
           "description": "Scrambled Eggs cooked served with labneh and avocado spread and our special spices sourdough bread.",
           "price": 40,
-          "image": "/images/talabat/001.jpg",
+          "image": "/images/talabat/001_Avocado_Toast.jpg",
           "sort_order": 2,
           "active": true
         },
@@ -34,7 +94,7 @@
           "name": "Pesto Halloumi Sandwich (Veg)",
           "description": "Sourdough bread filled with halloumi cheese and our special pomegranate pesto sauce and rocca leaves.",
           "price": 32,
-          "image": "/images/talabat/002.jpg",
+          "image": "/images/talabat/002_Pesto_Halloumi_Sandw.jpg",
           "sort_order": 3,
           "active": true
         },
@@ -44,7 +104,7 @@
           "name": "Iced Latte",
           "description": "Iced latte is a classic coffee item made from freshly roasted Brazilian beans.",
           "price": 25,
-          "image": "/images/talabat/003.jpg",
+          "image": "/images/talabat/003_Iced_Latte.jpg",
           "sort_order": 4,
           "active": true
         },
@@ -54,7 +114,7 @@
           "name": "Athr Falafel Wrap",
           "description": "Warm tortilla spread with creamy hummus and tahini topped with crisp pickles spicy sriracha sauce fresh chopped lettuce and golden falafel balls Served with a vibrant side salad featuring falafel drizzled with tahini sauce",
           "price": 27,
-          "image": "/images/talabat/004.jpg",
+          "image": "/images/talabat/004_Athr_Falafel_Wrap.jpg",
           "sort_order": 5,
           "active": true
         },
@@ -64,7 +124,7 @@
           "name": "Muhammara Cheese Sandwich",
           "description": "Sourdough toast with Qatari style roasted peppers, tomato, Swiss cheese, Edam cheese, served with rocket leaves on the side and rocket sauce.",
           "price": 29,
-          "image": "/images/talabat/005.jpg",
+          "image": "/images/talabat/005_Muhammara_Cheese_San.jpg",
           "sort_order": 6,
           "active": true
         }
@@ -84,7 +144,7 @@
           "name": "Iced Raspberry Matcha",
           "description": "Using matcha field",
           "price": 29,
-          "image": "/images/talabat/006.jpg",
+          "image": "/images/talabat/006_Iced_Raspberry_Match.jpg",
           "sort_order": 1,
           "active": true
         },
@@ -94,7 +154,7 @@
           "name": "Iced Signature Matcha ",
           "description": "Made by Haql Matcha",
           "price": 28,
-          "image": "/images/talabat/007.jpg",
+          "image": "/images/talabat/007_Iced_Signature_Match.jpg",
           "sort_order": 2,
           "active": true
         },
@@ -104,7 +164,7 @@
           "name": "Matcha Affogato",
           "description": "Matcha powder with milk, topped with vanilla ice cream",
           "price": 29,
-          "image": "/images/talabat/008.jpg",
+          "image": "/images/talabat/008_Matcha_Affogato.jpg",
           "sort_order": 3,
           "active": true
         },
@@ -114,7 +174,7 @@
           "name": "Iced Strawberry Matcha",
           "description": "Made using haql matcha",
           "price": 29,
-          "image": "/images/talabat/009.jpg",
+          "image": "/images/talabat/009_Iced_Strawberry_Matc.jpg",
           "sort_order": 4,
           "active": true
         },
@@ -124,7 +184,7 @@
           "name": "Iced Classic Matcha",
           "description": "Using Haql Matcha",
           "price": 27,
-          "image": "/images/talabat/010.jpg",
+          "image": "/images/talabat/010_Iced_Classic_Matcha.jpg",
           "sort_order": 5,
           "active": true
         }
@@ -144,7 +204,7 @@
           "name": "Athr Coffee Mug",
           "description": "Ceramic mug featuring the signature Athr Cafe logo. Designed for everyday use, perfect for enjoying your favorite hot beverage with a stylish touch.",
           "price": 45,
-          "image": "/images/talabat/011.jpg",
+          "image": "/images/talabat/011_Athr_Coffee_Mug.jpg",
           "sort_order": 1,
           "active": true
         }
@@ -164,7 +224,7 @@
           "name": "CHICKEN CLUB SANDWICH",
           "description": "Brioche bun stuffed with tender chicken cheddar cheese ripe tomato crisp lettuce and a fried egg drizzled with creamy ranch sauce served with chips and mayonnaise on the side",
           "price": 37,
-          "image": "/images/talabat/012.jpg",
+          "image": "/images/talabat/012_CHICKEN_CLUB_SANDWIC.jpg",
           "sort_order": 1,
           "active": true
         },
@@ -174,7 +234,7 @@
           "name": "Muhammara Cheese Sandwich",
           "description": "Sourdough toast with Qatari style roasted peppers, tomato, Swiss cheese, Edam cheese, served with rocket leaves on the side and rocket sauce.",
           "price": 29,
-          "image": "/images/talabat/013.jpg",
+          "image": "/images/talabat/013_Muhammara_Cheese_San.jpg",
           "sort_order": 2,
           "active": true
         },
@@ -184,7 +244,7 @@
           "name": "Athr Falafel Wrap",
           "description": "Warm tortilla spread with creamy hummus and tahini topped with crisp pickles spicy sriracha sauce fresh chopped lettuce and golden falafel balls Served with a vibrant side salad featuring falafel drizzled with tahini sauce",
           "price": 27,
-          "image": "/images/talabat/014.jpg",
+          "image": "/images/talabat/014_Athr_Falafel_Wrap.jpg",
           "sort_order": 3,
           "active": true
         },
@@ -194,7 +254,7 @@
           "name": "Chicken Pesto Sandwich",
           "description": "Sourdough bread stuffed with tender chicken sauteed in fragrant pesto sauce, layered with fresh rocca leaves, sun-dried tomatoes, melty cheese, and an extra drizzle of pesto.",
           "price": 37,
-          "image": "/images/talabat/015.jpg",
+          "image": "/images/talabat/015_Chicken_Pesto_Sandwi.jpg",
           "sort_order": 4,
           "active": true
         },
@@ -204,7 +264,7 @@
           "name": "Pesto Halloumi Sandwich (Veg)",
           "description": "Sourdough bread filled with halloumi cheese and our special pomegranate pesto sauce and rocca leaves.",
           "price": 32,
-          "image": "/images/talabat/016.jpg",
+          "image": "/images/talabat/016_Pesto_Halloumi_Sandw.jpg",
           "sort_order": 5,
           "active": true
         }
@@ -224,7 +284,7 @@
           "name": "Banana Oatmeal Bowl",
           "description": "Gluten-free oats mixed with peanut butter, maple syrup, almond milk, and Greek yogurt, topped with banana slices, toasted walnuts, peanut, and almond butter, drizzled with beehive and a sprinkle of cinnamon.",
           "price": 35,
-          "image": "/images/talabat/017.jpg",
+          "image": "/images/talabat/017_Banana_Oatmeal_Bowl.jpg",
           "sort_order": 1,
           "active": true
         },
@@ -234,7 +294,7 @@
           "name": "Strawberry Oatmeal Bowl",
           "description": "Gluten-free oats with Greek yogurt, maple syrup, peanut butter, and almond milk, topped with strawberry jam, fig slices, walnuts, peanut butter, and beehive.",
           "price": 35,
-          "image": "/images/talabat/018.jpg",
+          "image": "/images/talabat/018_Strawberry_Oatmeal_B.jpg",
           "sort_order": 2,
           "active": true
         },
@@ -244,7 +304,7 @@
           "name": "Classic Granola (Veg)",
           "description": "A crunchy mix of toasted oats, nuts, and seeds, lightly sweetened with honey, served with fresh strawberry honey Greek yogurt.",
           "price": 39,
-          "image": "/images/talabat/019.jpg",
+          "image": "/images/talabat/019_Classic_Granola_(Veg.jpg",
           "sort_order": 3,
           "active": true
         }
@@ -264,7 +324,7 @@
           "name": "Signature Matcha",
           "description": "Using Haql Matcha",
           "price": 28,
-          "image": "/images/talabat/020.jpg",
+          "image": "/images/talabat/020_Signature_Matcha.jpg",
           "sort_order": 1,
           "active": true
         },
@@ -274,7 +334,7 @@
           "name": " Zaffaran Matcha",
           "description": "Using Haql matcha",
           "price": 32,
-          "image": "/images/talabat/021.jpg",
+          "image": "/images/talabat/021_Zaffaran_Matcha.jpg",
           "sort_order": 2,
           "active": true
         },
@@ -284,7 +344,7 @@
           "name": "Raspberry Matcha",
           "description": "raspberry notes paired with matcha for a tangy and smooth fusion.",
           "price": 29,
-          "image": "/images/talabat/022.jpg",
+          "image": "/images/talabat/022_Raspberry_Matcha.jpg",
           "sort_order": 3,
           "active": true
         },
@@ -294,7 +354,7 @@
           "name": "Strawberry Matcha",
           "description": "Refreshing mix of strawberry and matcha over milk for a fruity and earthy balance.",
           "price": 29,
-          "image": "/images/talabat/023.jpg",
+          "image": "/images/talabat/023_Strawberry_Matcha.jpg",
           "sort_order": 4,
           "active": true
         },
@@ -304,7 +364,7 @@
           "name": "Classic Matcha",
           "description": "Pure matcha combined with milk for a clean, classic flavor experience.",
           "price": 27,
-          "image": "/images/talabat/024.jpg",
+          "image": "/images/talabat/024_Classic_Matcha.jpg",
           "sort_order": 5,
           "active": true
         }
@@ -324,7 +384,7 @@
           "name": "Iced Americano",
           "description": "Chilled espresso diluted with cold water for a refreshing, smooth taste.",
           "price": 20,
-          "image": "/images/talabat/025.jpg",
+          "image": "/images/talabat/025_Iced_Americano.jpg",
           "sort_order": 1,
           "active": true
         },
@@ -334,7 +394,7 @@
           "name": "Iced Spanish Latte",
           "description": "Iced Spanish Latte created with freshly roasted Brazil beans",
           "price": 28,
-          "image": "/images/talabat/026.jpg",
+          "image": "/images/talabat/026_Iced_Spanish_Latte.jpg",
           "sort_order": 2,
           "active": true
         },
@@ -344,7 +404,7 @@
           "name": "Dirty Cold Brew",
           "description": "Made using Brazil beans",
           "price": 24,
-          "image": "/images/talabat/027.jpg",
+          "image": "/images/talabat/027_Dirty_Cold_Brew.jpg",
           "sort_order": 3,
           "active": true
         },
@@ -354,7 +414,7 @@
           "name": "Iced Cold Brew",
           "description": "Prepared using Brazilian coffee",
           "price": 20,
-          "image": "/images/talabat/028.jpg",
+          "image": "/images/talabat/028_Iced_Cold_Brew.jpg",
           "sort_order": 4,
           "active": true
         },
@@ -364,7 +424,7 @@
           "name": "Iced Zaffran V60",
           "description": "Made with Ethiopian Beans",
           "price": 28,
-          "image": "/images/talabat/029.jpg",
+          "image": "/images/talabat/029_Iced_Zaffran_V60.jpg",
           "sort_order": 5,
           "active": true
         },
@@ -374,7 +434,7 @@
           "name": "Iced Flat White",
           "description": "Iced version of a creamy espresso with velvety milk and microfoam.",
           "price": 22,
-          "image": "/images/talabat/030.jpg",
+          "image": "/images/talabat/030_Iced_Flat_White.jpg",
           "sort_order": 6,
           "active": true
         },
@@ -384,7 +444,7 @@
           "name": "Iced Caramel Latte",
           "description": "Iced latte with caramel syrup for a sweet, creamy finish.",
           "price": 26,
-          "image": "/images/talabat/031.jpg",
+          "image": "/images/talabat/031_Iced_Caramel_Latte.jpg",
           "sort_order": 7,
           "active": true
         },
@@ -394,7 +454,7 @@
           "name": "Zaffran Latte Iced",
           "description": "Chilled latte infused with fragrant saffron for a floral note.",
           "price": 28,
-          "image": "/images/talabat/032.jpg",
+          "image": "/images/talabat/032_Zaffran_Latte_Iced.jpg",
           "sort_order": 8,
           "active": true
         },
@@ -404,7 +464,7 @@
           "name": "Iced Latte",
           "description": "Iced latte is a classic coffee item made from freshly roasted Brazilian beans.",
           "price": 25,
-          "image": "/images/talabat/033.jpg",
+          "image": "/images/talabat/033_Iced_Latte.jpg",
           "sort_order": 9,
           "active": true
         },
@@ -414,7 +474,7 @@
           "name": "Iced Tiramisu Latte",
           "description": "Cold espresso blended with tiramisu flavors and milk.",
           "price": 28,
-          "image": "/images/talabat/034.jpg",
+          "image": "/images/talabat/034_Iced_Tiramisu_Latte.jpg",
           "sort_order": 10,
           "active": true
         },
@@ -424,7 +484,7 @@
           "name": "V60",
           "description": "Chilled pour-over coffee offering bright, clean flavors.",
           "price": 26,
-          "image": "/images/talabat/035.jpg",
+          "image": "/images/talabat/035_V60.jpg",
           "sort_order": 11,
           "active": true
         }
@@ -444,7 +504,7 @@
           "name": "Hot Chocolate",
           "description": "Rich and velvety hot chocolate, made with cocoa powder",
           "price": 26,
-          "image": "/images/talabat/036.jpg",
+          "image": "/images/talabat/036_Hot_Chocolate.jpg",
           "sort_order": 1,
           "active": true
         },
@@ -454,7 +514,7 @@
           "name": "Tiramisu Latte",
           "description": "Espresso drink blended with tiramisu flavors and creamy milk.",
           "price": 28,
-          "image": "/images/talabat/037.jpg",
+          "image": "/images/talabat/037_Tiramisu_Latte.jpg",
           "sort_order": 2,
           "active": true
         },
@@ -464,7 +524,7 @@
           "name": "Cappuccino",
           "description": "Cappuccino made from Brazil beans",
           "price": 25,
-          "image": "/images/talabat/038.jpg",
+          "image": "/images/talabat/038_Cappuccino.jpg",
           "sort_order": 3,
           "active": true
         },
@@ -474,7 +534,7 @@
           "name": "Spanish Latte",
           "description": "Spanish latte made with brazil beans",
           "price": 28,
-          "image": "/images/talabat/039.jpg",
+          "image": "/images/talabat/039_Spanish_Latte.jpg",
           "sort_order": 4,
           "active": true
         },
@@ -484,7 +544,7 @@
           "name": "V60",
           "description": "Hot V60",
           "price": 26,
-          "image": "/images/talabat/040.jpg",
+          "image": "/images/talabat/040_V60.jpg",
           "sort_order": 5,
           "active": true
         },
@@ -494,7 +554,7 @@
           "name": "Zafron V60",
           "description": "Zafron V60 is freshly prepared ",
           "price": 28,
-          "image": "/images/talabat/041.jpg",
+          "image": "/images/talabat/041_Zafron_V60.jpg",
           "sort_order": 6,
           "active": true
         },
@@ -504,7 +564,7 @@
           "name": "Americano",
           "description": "Espresso diluted with hot water for a light, clean cup.",
           "price": 20,
-          "image": "/images/talabat/042.jpg",
+          "image": "/images/talabat/042_Americano.jpg",
           "sort_order": 7,
           "active": true
         },
@@ -514,7 +574,7 @@
           "name": "Cortado",
           "description": "Balanced blend of espresso and a small amount of steamed milk for a smooth finish.",
           "price": 21,
-          "image": "/images/talabat/043.jpg",
+          "image": "/images/talabat/043_Cortado.jpg",
           "sort_order": 8,
           "active": true
         },
@@ -524,7 +584,7 @@
           "name": "Latte",
           "description": "Brazil roasted beans for latte",
           "price": 25,
-          "image": "/images/talabat/044.jpg",
+          "image": "/images/talabat/044_Latte.jpg",
           "sort_order": 9,
           "active": true
         },
@@ -534,7 +594,7 @@
           "name": "Flat White",
           "description": "Velvety texture with espresso and micro-foamed milk for a rich, creamy mouthfeel.",
           "price": 22,
-          "image": "/images/talabat/045.jpg",
+          "image": "/images/talabat/045_Flat_White.jpg",
           "sort_order": 10,
           "active": true
         },
@@ -544,7 +604,7 @@
           "name": "Double Espresso",
           "description": "Bold, concentrated coffee with a rich crema and intense flavor.",
           "price": 20,
-          "image": "/images/talabat/046.jpg",
+          "image": "/images/talabat/046_Double_Espresso.jpg",
           "sort_order": 11,
           "active": true
         },
@@ -554,7 +614,7 @@
           "name": "Caramel Latte",
           "description": "Creamy latte with a rich caramel sweetness.",
           "price": 26,
-          "image": "/images/talabat/047.jpg",
+          "image": "/images/talabat/047_Caramel_Latte.jpg",
           "sort_order": 12,
           "active": true
         },
@@ -564,7 +624,7 @@
           "name": "Zaffran Latte",
           "description": "Latte infused with fragrant saffron for a warm, floral flavor.",
           "price": 28,
-          "image": "/images/talabat/048.jpg",
+          "image": "/images/talabat/048_Zaffran_Latte.jpg",
           "sort_order": 13,
           "active": true
         }
@@ -584,7 +644,7 @@
           "name": "Eggs & Tomatoes Croissant",
           "description": "Freshly baked butter croissant filled with Qatari Eggs & Tomatoes topped with cream cheese and fresh parsley.",
           "price": 38,
-          "image": "/images/talabat/049.jpg",
+          "image": "/images/talabat/049_Eggs_&_Tomatoes_Croi.jpg",
           "sort_order": 1,
           "active": true
         },
@@ -594,7 +654,7 @@
           "name": "Qatari French Toast",
           "description": "Classic breakfast item made with Qatari flavor ",
           "price": 38,
-          "image": "/images/talabat/050.jpg",
+          "image": "/images/talabat/050_Qatari_French_Toast.jpg",
           "sort_order": 2,
           "active": true
         },
@@ -604,7 +664,7 @@
           "name": "Qatari Saffron Pancakes",
           "description": "Soft pancakes infused with cardamom and rose water topped with saffron cream and natural honey",
           "price": 36,
-          "image": "/images/talabat/051.jpg",
+          "image": "/images/talabat/051_Qatari_Saffron_Panca.jpg",
           "sort_order": 3,
           "active": true
         },
@@ -614,7 +674,7 @@
           "name": "Balaleet",
           "description": "Qatari dish made of sweet noodles and served with egg",
           "price": 29,
-          "image": "/images/talabat/052.jpg",
+          "image": "/images/talabat/052_Balaleet.jpg",
           "sort_order": 4,
           "active": true
         },
@@ -624,7 +684,7 @@
           "name": "Foul V",
           "description": "Qatari foul",
           "price": 22,
-          "image": "/images/talabat/053.jpg",
+          "image": "/images/talabat/053_Foul_V.jpg",
           "sort_order": 5,
           "active": true
         },
@@ -634,7 +694,7 @@
           "name": "Lobah (V)",
           "description": "Qatari baked beans cooked with our signature spices and onion, served with a side of Arabic bread.",
           "price": 22,
-          "image": "/images/talabat/054.jpg",
+          "image": "/images/talabat/054_Lobah_(V).jpg",
           "sort_order": 6,
           "active": true
         },
@@ -644,7 +704,7 @@
           "name": "Eggs & Tomatoes",
           "description": "Fresh eggs cooked in a rich tomato sauce, seasoned with salt, pepper, and a hint of Qatari spices.",
           "price": 20,
-          "image": "/images/talabat/055.jpg",
+          "image": "/images/talabat/055_Eggs_&_Tomatoes.jpg",
           "sort_order": 7,
           "active": true
         }
@@ -664,7 +724,7 @@
           "name": "Cheese Omelet",
           "description": "Served with a seasonal salad",
           "price": 25,
-          "image": "/images/talabat/056.jpg",
+          "image": "/images/talabat/056_Cheese_Omelet.jpg",
           "sort_order": 1,
           "active": true
         },
@@ -674,7 +734,7 @@
           "name": "Muhammara Egg Toast",
           "description": "Sourdough toast with Qatari-style roasted peppers topped with cream and baby rocket finished with scrambled eggs on top",
           "price": 34,
-          "image": "/images/talabat/057.jpg",
+          "image": "/images/talabat/057_Muhammara_Egg_Toast.jpg",
           "sort_order": 2,
           "active": true
         },
@@ -684,7 +744,7 @@
           "name": "Zattar Egg and Homemade Labneh Toast",
           "description": "Toasted sourdough with Turkish labneh blended with a special mix, served with zattar coated eggs, finished with olives, dill, and sumac",
           "price": 33,
-          "image": "/images/talabat/058.jpg",
+          "image": "/images/talabat/058_Zattar_Egg_and_Homem.jpg",
           "sort_order": 3,
           "active": true
         },
@@ -694,7 +754,7 @@
           "name": "Falafel Beetroot Hummus Toast Bread",
           "description": "Sourdough toast bread with beetroot hummus, topped with baby rocket and falafel, finished with tahini sauce, olives, and pickles.",
           "price": 35,
-          "image": "/images/talabat/059.jpg",
+          "image": "/images/talabat/059_Falafel_Beetroot_Hum.jpg",
           "sort_order": 4,
           "active": true
         },
@@ -704,7 +764,7 @@
           "name": "Falafel Dipping Platter",
           "description": "Nine golden falafel balls served with beetroot hummus and tahini dips sprinkled with sumac. Accompanied by black and green olives, rocket sauce, crushed pepper blended with olive oil, and toasted bread for dipping.",
           "price": 35,
-          "image": "/images/talabat/060.jpg",
+          "image": "/images/talabat/060_Falafel_Dipping_Plat.jpg",
           "sort_order": 5,
           "active": true
         },
@@ -714,7 +774,7 @@
           "name": "Mushroom Truffle Egg Toast",
           "description": "Scrambled Eggs cooked with truffle oil and served with mushrooms and rocket leaves on sour sourdough with cream cheese.",
           "price": 40,
-          "image": "/images/talabat/061.jpg",
+          "image": "/images/talabat/061_Mushroom_Truffle_Egg.jpg",
           "sort_order": 6,
           "active": true
         },
@@ -724,7 +784,7 @@
           "name": "Avocado Toast",
           "description": "Scrambled Eggs cooked served with labneh and avocado spread and our special spices sourdough bread.",
           "price": 40,
-          "image": "/images/talabat/062.jpg",
+          "image": "/images/talabat/062_Avocado_Toast.jpg",
           "sort_order": 7,
           "active": true
         },
@@ -734,7 +794,7 @@
           "name": "Athr Croissant Benedict",
           "description": "Freshly baked butter croissant filled with Qatari Eggs & Tomatoes topped with cream cheese and fresh parslcy.",
           "price": 40,
-          "image": "/images/talabat/063.jpg",
+          "image": "/images/talabat/063_Athr_Croissant_Bened.jpg",
           "sort_order": 8,
           "active": true
         },
@@ -744,7 +804,7 @@
           "name": "Farmhouse Omelette",
           "description": "Farm house omelette cooked with peppers, sun-dried tomatoes, and our cheese blend topped with avocado slices and served with a side of bread.",
           "price": 30,
-          "image": "/images/talabat/064.jpg",
+          "image": "/images/talabat/064_Farmhouse_Omelette.jpg",
           "sort_order": 9,
           "active": true
         },
@@ -754,7 +814,7 @@
           "name": "Plain Omelette",
           "description": "Perfectly cooked omelette served with a salad and a side of bread.",
           "price": 25,
-          "image": "/images/talabat/065.jpg",
+          "image": "/images/talabat/065_Plain_Omelette.jpg",
           "sort_order": 10,
           "active": true
         }
@@ -774,7 +834,7 @@
           "name": "Qatari French Toast",
           "description": "Breouche bread flavored Karak served with fresh berries and ice cream.",
           "price": 38,
-          "image": "/images/talabat/066.jpg",
+          "image": "/images/talabat/066_Qatari_French_Toast.jpg",
           "sort_order": 1,
           "active": true
         },
@@ -784,7 +844,7 @@
           "name": "Hazelnut Cake",
           "description": "Premium Hazelnut Cake featuring a crunchy layer of feuilletine with milk chocolate and hazelnut butter, almond hazelnut biscuit, milk chocolate ganache, and topped with rich milk chocolate and hazelnut butter mousse",
           "price": 26,
-          "image": "/images/talabat/067.jpg",
+          "image": "/images/talabat/067_Hazelnut_Cake.jpg",
           "sort_order": 2,
           "active": true
         },
@@ -794,7 +854,7 @@
           "name": "Victoria Cake",
           "description": "Victoria Cake featuring a vanilla sponge layer topped with whipped cream and strawberry slices, finished with an additional sponge layer on top",
           "price": 25,
-          "image": "/images/talabat/068.jpg",
+          "image": "/images/talabat/068_Victoria_Cake.jpg",
           "sort_order": 3,
           "active": true
         },
@@ -804,7 +864,7 @@
           "name": "Pecan and Dates Cake",
           "description": "Delicious Date and Pecan Cake featuring a cookie base topped with date-pecan cream and ice cream served with milk chocolate sauce.",
           "price": 35,
-          "image": "/images/talabat/069.jpg",
+          "image": "/images/talabat/069_Pecan_and_Dates_Cake.jpg",
           "sort_order": 4,
           "active": true
         },
@@ -814,7 +874,7 @@
           "name": "Athr Baklava Cheesecake",
           "description": "Athr Baklava Cheesecake features a crunchy almond-flavored base topped with creamy cheesecake layers finished with roasted pistachios and delicate baklava pieces for an exquisite dessert experience",
           "price": 33,
-          "image": "/images/talabat/070.jpg",
+          "image": "/images/talabat/070_Athr_Baklava_Cheesec.jpg",
           "sort_order": 5,
           "active": true
         },
@@ -824,7 +884,7 @@
           "name": "The Sunset of Athr",
           "description": "Cardamom and saffron flavored sponge topped with caramel cream served with saffron sauce",
           "price": 27,
-          "image": "/images/talabat/071.jpg",
+          "image": "/images/talabat/071_The_Sunset_of_Athr.jpg",
           "sort_order": 6,
           "active": true
         },
@@ -834,7 +894,7 @@
           "name": "Athar's Signature Strawberry",
           "description": "Consists of freshly baked sponge cake layered with homemade jam and cream covered with strawberry mousse and white chocolate sticks.",
           "price": 34,
-          "image": "/images/talabat/072.jpg",
+          "image": "/images/talabat/072_Athar's_Signature_St.jpg",
           "sort_order": 7,
           "active": true
         },
@@ -844,7 +904,7 @@
           "name": "Zafron & Dates signature japanese cheesecake",
           "description": "The batter of the cheesecake consists of dates, and it is covered with zafron and dates cream.",
           "price": 35,
-          "image": "/images/talabat/073.jpg",
+          "image": "/images/talabat/073_Zafron_&_Dates_signa.jpg",
           "sort_order": 8,
           "active": true
         },
@@ -854,7 +914,7 @@
           "name": "Chocolate Eclairs",
           "description": "Delicate pastry shells filled with rich chocolate cream and finished with a glossy chocolate glaze.",
           "price": 19,
-          "image": "/images/talabat/074.jpg",
+          "image": "/images/talabat/074_Chocolate_Eclairs.jpg",
           "sort_order": 9,
           "active": true
         },
@@ -864,7 +924,7 @@
           "name": "Classic Tiramisu",
           "description": "Layers of espresso-soaked ladyfingers and mascarpone cream, dusted with cocoa powder.",
           "price": 34,
-          "image": "/images/talabat/075.jpg",
+          "image": "/images/talabat/075_Classic_Tiramisu.jpg",
           "sort_order": 10,
           "active": true
         }
@@ -884,7 +944,7 @@
           "name": "Berry Smoothie",
           "description": "Creamy smoothie packed with mixed berries and vibrant flavors.",
           "price": 27,
-          "image": "/images/talabat/076.jpg",
+          "image": "/images/talabat/076_Berry_Smoothie.jpg",
           "sort_order": 1,
           "active": true
         },
@@ -894,7 +954,7 @@
           "name": "Lemon Mint juice",
           "description": "Refreshing blend of lemon and mint for a zesty, cooling juice.",
           "price": 25,
-          "image": "/images/talabat/077.jpg",
+          "image": "/images/talabat/077_Lemon_Mint_juice.jpg",
           "sort_order": 2,
           "active": true
         },
@@ -904,7 +964,7 @@
           "name": "Orange juice",
           "description": "Freshly squeezed orange juice bursting with natural sweetness.",
           "price": 22,
-          "image": "/images/talabat/078.jpg",
+          "image": "/images/talabat/078_Orange_juice.jpg",
           "sort_order": 3,
           "active": true
         }
@@ -924,7 +984,7 @@
           "name": "Iced Karkade",
           "description": "Signature cold drink",
           "price": 27,
-          "image": "/images/talabat/079.jpg",
+          "image": "/images/talabat/079_Iced_Karkade.jpg",
           "sort_order": 1,
           "active": true
         },
@@ -934,7 +994,7 @@
           "name": "Peach Iced Tea",
           "description": "Perfect summer drink",
           "price": 25,
-          "image": "/images/talabat/080.jpg",
+          "image": "/images/talabat/080_Peach_Iced_Tea.jpg",
           "sort_order": 2,
           "active": true
         },
@@ -944,7 +1004,7 @@
           "name": "Signature ice tea",
           "description": "Refreshing iced tea with a unique house-blend flavor.",
           "price": 27,
-          "image": "/images/talabat/081.jpg",
+          "image": "/images/talabat/081_Signature_ice_tea.jpg",
           "sort_order": 3,
           "active": true
         },
@@ -954,7 +1014,7 @@
           "name": "Passion Ice tea",
           "description": "Vibrant iced tea infused with tropical passion fruit notes.",
           "price": 25,
-          "image": "/images/talabat/082.jpg",
+          "image": "/images/talabat/082_Passion_Ice_tea.jpg",
           "sort_order": 4,
           "active": true
         }
@@ -974,7 +1034,7 @@
           "name": "Passion mojito",
           "description": "Tropical passion fruit mixed with mint and a fizzy twist.",
           "price": 27,
-          "image": "/images/talabat/083.jpg",
+          "image": "/images/talabat/083_Passion_mojito.jpg",
           "sort_order": 1,
           "active": true
         },
@@ -984,7 +1044,7 @@
           "name": "Virgin Mojito",
           "description": "Classic mojito flavor without alcohol, featuring lime and mint.",
           "price": 25,
-          "image": "/images/talabat/084.jpg",
+          "image": "/images/talabat/084_Virgin_Mojito.jpg",
           "sort_order": 2,
           "active": true
         },
@@ -994,12 +1054,11 @@
           "name": "Strawberry mojito",
           "description": "Sweet strawberry-infused mojito with fresh mint and lime.",
           "price": 25,
-          "image": "/images/talabat/085.jpg",
+          "image": "/images/talabat/085_Strawberry_mojito.jpg",
           "sort_order": 3,
           "active": true
         }
       ]
     }
-  ],
-  "today_product_id": null
+  ]
 }
