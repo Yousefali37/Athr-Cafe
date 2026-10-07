@@ -5,6 +5,8 @@ import fs from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { ensureSeeded } from './seedData.js'
 import { publicRouter, adminRouter } from './routes.js'
+import { db, DB_PATH } from './db.js'
+import { isVercel, scheduleFlush, canUploadToBlob, uploadImage } from './persist.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -12,13 +14,25 @@ const app = express()
 app.disable('x-powered-by')
 app.use(express.json({ limit: '2mb' }))
 
+// ---------- persistence: flush the DB snapshot after every write ----------
+// (no-op locally / when no Blob store is configured; upload writes don't
+// change the database so they're excluded)
+app.use('/api', (req, res, next) => {
+  if (req.method === 'GET' || req.method === 'HEAD') return next()
+  if (req.path === '/admin/upload') return next()
+  res.on('finish', () => scheduleFlush(db, DB_PATH))
+  next()
+})
+
 // ---------- seed on cold start (no-op when data is present) ----------
-if (process.env.VERCEL === '1') {
+// prepareDb() (see persist.js) has already restored/copied the DB file by
+// the time we get here — this only seeds when there is no data at all.
+if (isVercel) {
   try {
     const stats = ensureSeeded()
     if (stats)
       console.log(
-        `[cold start] Seeded ${stats.categories} categories, ${stats.products} products (EPHEMERAL /tmp storage).`,
+        `[cold start] Seeded ${stats.categories} categories, ${stats.products} products from JSON seed.`,
       )
   } catch (err) {
     console.error('[cold start] seed failed:', err.message)
@@ -44,10 +58,19 @@ const upload = multer({
   fileFilter: (req, file, cb) => cb(null, /^image\//.test(file.mimetype)),
 })
 
-app.post('/api/admin/upload', adminRouter, upload.single('image'), (req, res) => {
+app.post('/api/admin/upload', adminRouter, upload.single('image'), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'No image uploaded.' })
-  const url = `/uploads/${req.file.filename}`
-  res.status(201).json({ url })
+  if (canUploadToBlob()) {
+    try {
+      const buf = await fs.promises.readFile(req.file.path)
+      const url = await uploadImage(buf, req.file.originalname, req.file.mimetype)
+      fs.promises.unlink(req.file.path).catch(() => {})
+      return res.status(201).json({ url })
+    } catch (err) {
+      console.error('[persist] Blob upload failed, falling back to disk:', err.message)
+    }
+  }
+  res.status(201).json({ url: `/uploads/${req.file.filename}` })
 })
 
 app.use('/uploads', express.static(UPLOAD_DIR, { maxAge: '7d' }))

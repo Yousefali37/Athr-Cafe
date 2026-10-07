@@ -1,13 +1,30 @@
 /**
  * Vercel Serverless Function — entry point for /api/* and /uploads/* rewrites.
  *
- * On every cold start the Express app auto-seeds an empty /tmp SQLite DB so
- * the site is always operational.  This means admin edits (settings, category /
- * product CRUD) are *ephemeral* and may be lost on cold starts.
- *
- * To persist data in production swap the SQLite driver for a hosted DB
- * (Turso/Neon/Supabase) — only server/db.js needs to change.
+ * On every cold boot we restore the SQLite snapshot from Vercel Blob (private
+ * store) before opening the database, so admin edits, menu changes and
+ * contact messages survive deploys and cold starts. Fallback order when no
+ * snapshot exists yet: repo-tracked server/data DB → JSON seed.
  */
-import app from '../server/app.js'
+import { prepareDb } from '../server/persist.js'
+import { DB_PATH, openDb } from '../server/db.js'
 
-export default app
+let appPromise = null
+
+async function boot() {
+  await prepareDb(DB_PATH)
+  openDb()
+  const { default: app } = await import('../server/app.js')
+  return app
+}
+
+export default function handler(req, res) {
+  if (!appPromise) {
+    appPromise = boot().catch((err) => {
+      console.error('[boot] failed:', err)
+      appPromise = null
+      throw err
+    })
+  }
+  return appPromise.then((app) => app(req, res))
+}

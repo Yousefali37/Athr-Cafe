@@ -5,8 +5,9 @@ import fs from 'node:fs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // On Vercel the filesystem is read-only except /tmp, which resets on cold
-// starts — ensureSeeded() re-creates the data there automatically.
-const DB_PATH =
+// starts — the entry points restore the snapshot from Vercel Blob (see
+// persist.js) BEFORE openDb() runs, and flush writes back after every change.
+export const DB_PATH =
   process.env.DB_PATH ||
   (process.env.VERCEL === '1'
     ? path.join('/tmp', 'athr-cafe.db')
@@ -14,9 +15,20 @@ const DB_PATH =
 
 fs.mkdirSync(path.dirname(DB_PATH), { recursive: true })
 
-export const db = new Database(DB_PATH)
-db.pragma('journal_mode = WAL')
-db.pragma('foreign_keys = ON')
+export let db = null
+
+/**
+ * Open the SQLite database. Must be called (by the entry point) before any
+ * query runs — entries await restore/seed first, then call openDb().
+ */
+export function openDb() {
+  if (!db) {
+    db = new Database(DB_PATH)
+    db.pragma('journal_mode = WAL')
+    db.pragma('foreign_keys = ON')
+  }
+  return db
+}
 
 export function initSchema() {
   db.exec(`

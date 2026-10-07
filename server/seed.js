@@ -6,7 +6,9 @@
  *   node server/seed.js --force    # drop + reseed
  */
 import { loadMenuData, populate } from './seedData.js'
-import { db, initSchema } from './db.js'
+import { db, initSchema, openDb } from './db.js'
+
+openDb()
 
 const force = process.argv.includes('--force')
 

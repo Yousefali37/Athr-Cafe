@@ -1,4 +1,7 @@
-import app from './app.js'
+import { openDb } from './db.js'
+
+openDb()
+const { default: app } = await import('./app.js')
 
 const PORT = process.env.PORT || 4000
 

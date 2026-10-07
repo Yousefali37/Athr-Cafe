@@ -107,7 +107,8 @@ let ensured = false
 
 /**
  * Seeds the database if it is empty. Safe to call on every cold start
- * (Vercel /tmp storage is ephemeral, so a fresh deployment reseeds itself).
+ * (the entry restores the Blob snapshot first — this only runs when the
+ * database has no categories at all, e.g. brand-new environments).
  */
 export function ensureSeeded(force = false) {
   if (ensured && !force) return null
