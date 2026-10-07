@@ -106,21 +106,6 @@ export default function AdminContent({ token, onUnauthorized }) {
 
   const set = (key, value) => setSite((s) => ({ ...s, [key]: value }))
 
-  // gallery helpers
-  const setGallery = (next) => {
-    set('gallery', next)
-  }
-  const updateGalleryItem = (i, patch) =>
-    setGallery(site.gallery.map((g, idx) => (idx === i ? { ...g, ...patch } : g)))
-  const moveGallery = (i, dir) => {
-    const next = [...site.gallery]
-    const [item] = next.splice(i, 1)
-    next.splice(i + dir, 0, item)
-    setGallery(next)
-  }
-  const removeGalleryItem = (i) => setGallery(site.gallery.filter((_, idx) => idx !== i))
-  const addGalleryItem = () => setGallery([...site.gallery, { src: '', caption: '' }])
-
   // instagram helpers
   const updateInstaPost = (i, patch) =>
     set('insta_posts', site.insta_posts.map((p, idx) => (idx === i ? { ...p, ...patch } : p)))
@@ -194,37 +179,6 @@ export default function AdminContent({ token, onUnauthorized }) {
           </select>
         </Field>
       </div>
-
-      <h3 className="block-title">Gallery</h3>
-      {site.gallery.length === 0 ? (
-        <p className="muted">No gallery images yet.</p>
-      ) : (
-        <div className="gallery-admin">
-          {site.gallery.map((g, i) => (
-            <div className="gallery-admin-item" key={i}>
-              <div className="gallery-admin-img">
-                {g.src ? <img src={g.src} alt="" /> : <span>No image</span>}
-              </div>
-              <input
-                placeholder="Caption"
-                value={g.caption || ''}
-                onChange={(e) => updateGalleryItem(i, { caption: e.target.value })}
-              />
-              <input
-                placeholder="Image URL"
-                value={g.src || ''}
-                onChange={(e) => updateGalleryItem(i, { src: e.target.value })}
-              />
-              <div className="row-actions">
-                <button type="button" className="btn btn-xs" onClick={() => moveGallery(i, -1)} disabled={i === 0}>↑</button>
-                <button type="button" className="btn btn-xs" onClick={() => moveGallery(i, 1)} disabled={i === site.gallery.length - 1}>↓</button>
-                <button type="button" className="btn btn-xs btn-danger" onClick={() => removeGalleryItem(i)}>Remove</button>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-      <button type="button" className="btn btn-outline" onClick={addGalleryItem}>+ Add gallery image</button>
 
       <h3 className="block-title">Instagram section</h3>
       <div className="grid-2">

@@ -471,7 +471,7 @@ textarea {
   gap: 10px;
 }
 
-/* gallery admin */
+/* list editor cards (instagram posts) */
 .gallery-admin {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
