@@ -7,7 +7,6 @@ import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import TodaysMenu from './components/TodaysMenu.jsx'
 import MenuSection from './components/MenuSection.jsx'
-import Gallery from './components/Gallery.jsx'
 import InstagramFeed from './components/InstagramFeed.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
@@ -108,7 +107,6 @@ export default function PublicSite() {
               onSearchChange={setSearch}
               onSelect={setSelection}
             />
-            <Gallery site={site} />
             <InstagramFeed site={site} />
             <Contact site={site} />
           </main>

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 const HOVER_SELECTOR =
-  'a, button, input, textarea, select, .product-card, .gallery-item, [data-cursor]'
+  'a, button, input, textarea, select, .product-card, [data-cursor]'
 
 function cursorSupported() {
   if (typeof window === 'undefined') return false

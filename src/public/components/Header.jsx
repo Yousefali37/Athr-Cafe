@@ -6,7 +6,7 @@ import LogoMark from './LogoMark.jsx'
 const NAV = [
   { href: '#today', label: "Today's Special" },
   { href: '#menu', label: 'Our Menu' },
-  { href: '#gallery', label: 'Gallery' },
+  { href: '#instagram', label: 'Instagram' },
   { href: '#contact', label: 'Contact' },
 ]
 

@@ -1,12 +1,4 @@
-﻿.menu-empty {
-  text-align: center;
-  color: var(--muted);
-  padding: 60px 0;
-  display: grid;
-  justify-items: center;
-  gap: 16px;
-}
-.insta-section {
+﻿.insta-section {
   padding: 100px 0 40px;
   background: var(--paper);
 }

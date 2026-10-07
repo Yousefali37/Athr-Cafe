@@ -99,7 +99,7 @@ export default function Footer({ site }) {
           <ul className="footer-nav">
             <li><a href="#today">Today</a></li>
             <li><a href="#menu">Menu</a></li>
-            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#instagram">Instagram</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
