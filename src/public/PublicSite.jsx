@@ -91,7 +91,25 @@ export default function PublicSite() {
 
   const findOnMenu = () => {
     setSearch('')
-    if (site.today_product) setFocusId(site.today_product.id)
+    const p = site.today_product
+    if (p) {
+      setFocusId(p.id)
+      let found = false
+      for (const top of site.menu || []) {
+        if (top.id === p.category_id) {
+          setSelection({ topId: top.id, subId: null })
+          found = true
+          break
+        }
+        const sub = (top.subcategories || []).find((s) => s.id === p.category_id)
+        if (sub) {
+          setSelection({ topId: top.id, subId: sub.id })
+          found = true
+          break
+        }
+      }
+      if (!found) setSelection({ topId: null, subId: null })
+    }
     const target = document.getElementById('menu')
     if (window.location.hash === '#menu') {
       target?.scrollIntoView({ behavior: 'smooth' })
