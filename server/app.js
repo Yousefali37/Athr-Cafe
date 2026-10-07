@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url'
 import { ensureSeeded } from './seedData.js'
 import { publicRouter, adminRouter } from './routes.js'
 import { db, DB_PATH } from './db.js'
-import { isVercel, scheduleFlush, canUploadToBlob, uploadImage } from './persist.js'
+import { isVercel, flushNow, canUploadToBlob, uploadImage } from './persist.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -14,13 +14,18 @@ const app = express()
 app.disable('x-powered-by')
 app.use(express.json({ limit: '2mb' }))
 
-// ---------- persistence: flush the DB snapshot after every write ----------
-// (no-op locally / when no Blob store is configured; upload writes don't
-// change the database so they're excluded)
+// ---------- persistence: DB snapshot is flushed into Blob BEFORE the
+// response is sent, so a successful write can never be lost to an idle
+// serverless instance. (No-op locally / without a Blob store; uploads and
+// logins don't change the database so they're excluded.)
 app.use('/api', (req, res, next) => {
   if (req.method === 'GET' || req.method === 'HEAD') return next()
-  if (req.path === '/admin/upload') return next()
-  res.on('finish', () => scheduleFlush(db, DB_PATH))
+  if (req.path === '/admin/upload' || req.path === '/admin/login') return next()
+  const sendJson = res.json.bind(res)
+  res.json = (body) => {
+    const flush = res.statusCode < 300 ? flushNow(db, DB_PATH) : Promise.resolve()
+    return flush.finally(() => sendJson(body))
+  }
   next()
 })
 

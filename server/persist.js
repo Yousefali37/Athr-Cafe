@@ -103,6 +103,34 @@ export async function prepareDb(dbPath) {
 }
 
 /**
+ * Immediate, awaited flush — used on the request path so a mutation's
+ * response is only sent AFTER the snapshot is safely in Blob (a fire-and-
+ * forget flush can be killed if the serverless instance goes idle first).
+ * Falls back to the retrying scheduleFlush() on failure.
+ */
+export async function flushNow(db, dbPath) {
+  if (!canPersist()) return
+  try {
+    db.pragma('wal_checkpoint(TRUNCATE)')
+    const buf = await fs.promises.readFile(dbPath)
+    await put(DB_PATHNAME, buf, {
+      access: 'private',
+      allowOverwrite: true,
+      addRandomSuffix: false,
+      contentType: 'application/octet-stream',
+      ...authFor('data'),
+    })
+    queued = false
+    console.log(`[persist] DB snapshot flushed (${buf.length} bytes)`)
+    return true
+  } catch (err) {
+    console.error('[persist] flush failed:', err.message)
+    scheduleFlush(db, dbPath)
+    return false
+  }
+}
+
+/**
  * Flush the SQLite file back to Blob. Serialized: writes that land while a
  * flush is running trigger exactly one more run afterwards.
  * Retries up to 3 times with a 3s delay, then gives up until the next write.
