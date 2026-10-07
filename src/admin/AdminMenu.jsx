@@ -147,7 +147,7 @@ export default function AdminMenu({ token, onUnauthorized }) {
 
   const q = query.trim().toLowerCase()
   const filterProd = (p) => !q || p.name.toLowerCase().includes(q) || (p.description || '').toLowerCase().includes(q)
-  const filterCat = (c) => !q || c.name.toLowerCase().includes(q) || (c.subcategories || []).some(fc => filterCat(fc))
+  const filterCat = (c) => !q || c.name.toLowerCase().includes(q) || (c.products || []).some(filterProd) || (c.subcategories || []).some(fc => filterCat(fc))
 
   const topCats = q ? tree.filter(filterCat) : tree
 
@@ -187,7 +187,7 @@ export default function AdminMenu({ token, onUnauthorized }) {
               <strong>{top.name}</strong>
               <span className="cat-meta">
                 {top.active ? 'visible' : 'hidden'} · {top.subcategories.length} subcategories ·
-                {top.subcategories.reduce((n, s) => n + s.products.length, 0)} items
+                {top.products.length + top.subcategories.reduce((n, s) => n + s.products.length, 0)} items
               </span>
             </div>
             <Toggle on={!!top.active} onToggle={() => toggleCategoryActive(top)} label="Toggle visibility" />
@@ -224,7 +224,7 @@ export default function AdminMenu({ token, onUnauthorized }) {
 
           {newProdFor && newProdFor.id === top.id && (
             <ProductEditor
-              prod={{ id: 'new', ...emptyProd, category_id: '' }}
+              prod={{ id: 'new', ...emptyProd, category_id: top.id }}
               token={token}
               tree={tree}
               isNew
@@ -237,6 +237,25 @@ export default function AdminMenu({ token, onUnauthorized }) {
 
           {expandedCat[top.id] && (
             <div className="cat-children">
+              {top.products.filter(filterProd).length > 0 && (
+                <div className="prod-list">
+                  <ProductRows
+                    prods={top.products.filter(filterProd)}
+                    token={token}
+                    tree={tree}
+                    busy={busy}
+                    editingProd={editingProd}
+                    setEditingProd={setEditingProd}
+                    saveProduct={saveProduct}
+                    removeProduct={removeProduct}
+                    toggleProductActive={toggleProductActive}
+                    onUnauthorized={onUnauthorized}
+                  />
+                </div>
+              )}
+              {top.products.filter(filterProd).length === 0 && top.products.length > 0 && (
+                <p className="muted small">No items.</p>
+              )}
               {top.subcategories.map((sub) => {
                 const prods = q ? (sub.products || []).filter(filterProd) : sub.products || []
                 return (
@@ -285,31 +304,18 @@ export default function AdminMenu({ token, onUnauthorized }) {
 
                     {expandedSub[sub.id] && (
                       <div className="prod-list">
-                        {prods.map((p) => (
-                          <div key={p.id}>
-                            <div className={`prod-row ${p.active ? '' : 'inactive'}`}>
-                              <div className="cat-avatar">{p.image ? <img src={p.image} alt="" /> : <span>🧁</span>}</div>
-                              <div className="cat-name">
-                                <strong>{p.name}</strong>
-                                <span className="cat-meta">QAR {Number(p.price).toFixed(2)}{p.description ? ' · ' + p.description : ''}</span>
-                              </div>
-                              <Toggle on={!!p.active} onToggle={() => toggleProductActive(p)} label="Toggle visibility" />
-                              <button type="button" className="btn btn-xs" onClick={() => setEditingProd(p)}>Edit</button>
-                              <button type="button" className="btn btn-xs btn-danger" onClick={() => removeProduct(p)}>Delete</button>
-                            </div>
-                            {editingProd && editingProd.id === p.id && (
-                              <ProductEditor
-                                prod={p}
-                                token={token}
-                                tree={tree}
-                                busy={busy}
-                                onSave={(data) => saveProduct(p, data)}
-                                onCancel={() => setEditingProd(null)}
-                                onUnauthorized={onUnauthorized}
-                              />
-                            )}
-                          </div>
-                        ))}
+                        <ProductRows
+                          prods={prods}
+                          token={token}
+                          tree={tree}
+                          busy={busy}
+                          editingProd={editingProd}
+                          setEditingProd={setEditingProd}
+                          saveProduct={saveProduct}
+                          removeProduct={removeProduct}
+                          toggleProductActive={toggleProductActive}
+                          onUnauthorized={onUnauthorized}
+                        />
                         {prods.length === 0 && <p className="muted small">No items.</p>}
                       </div>
                     )}
@@ -326,6 +332,34 @@ export default function AdminMenu({ token, onUnauthorized }) {
 }
 
 // ---------------- editor forms ----------------
+function ProductRows({ prods, token, tree, busy, editingProd, setEditingProd, saveProduct, removeProduct, toggleProductActive, onUnauthorized }) {
+  return prods.map((p) => (
+    <div key={p.id}>
+      <div className={`prod-row ${p.active ? '' : 'inactive'}`}>
+        <div className="cat-avatar">{p.image ? <img src={p.image} alt="" /> : <span>🧁</span>}</div>
+        <div className="cat-name">
+          <strong>{p.name}</strong>
+          <span className="cat-meta">QAR {Number(p.price).toFixed(2)}{p.description ? ' · ' + p.description : ''}</span>
+        </div>
+        <Toggle on={!!p.active} onToggle={() => toggleProductActive(p)} label="Toggle visibility" />
+        <button type="button" className="btn btn-xs" onClick={() => setEditingProd(p)}>Edit</button>
+        <button type="button" className="btn btn-xs btn-danger" onClick={() => removeProduct(p)}>Delete</button>
+      </div>
+      {editingProd && editingProd.id === p.id && (
+        <ProductEditor
+          prod={p}
+          token={token}
+          tree={tree}
+          busy={busy}
+          onSave={(data) => saveProduct(p, data)}
+          onCancel={() => setEditingProd(null)}
+          onUnauthorized={onUnauthorized}
+        />
+      )}
+    </div>
+  ))
+}
+
 function CategoryEditor({ cat, isNew, tree, token, busy, onSave, onCancel, onUnauthorized }) {
   const [d, setD] = useState({ ...cat })
   const set = (k, v) => setD((s) => ({ ...s, [k]: v }))
@@ -371,6 +405,7 @@ function ProductEditor({ prod, isNew, tree, token, busy, onSave, onCancel, onUna
     const subs = top.subcategories || []
     options.push(
       <optgroup key={top.id} label={top.name}>
+        <option value={top.id}>{top.name}</option>
         {subs.map((s) => (
           <option key={s.id} value={s.id}>{s.name}</option>
         ))}
@@ -386,9 +421,9 @@ function ProductEditor({ prod, isNew, tree, token, busy, onSave, onCancel, onUna
           <input value={d.name} onChange={(e) => set('name', e.target.value)} autoFocus />
         </label>
         <label className="field">
-          <span className="span-label">Subcategory</span>
+          <span className="span-label">Category</span>
           <select value={d.category_id || ''} onChange={(e) => set('category_id', e.target.value)}>
-            <option value="">— select subcategory —</option>
+            <option value="">— select category —</option>
             {options}
           </select>
         </label>
