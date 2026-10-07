@@ -505,6 +505,21 @@ textarea {
   height: 100%;
   object-fit: cover;
 }
+.gallery-admin-item input,
+.gallery-admin-item select {
+  width: 100%;
+  border: 1.5px solid rgba(30, 26, 21, 0.16);
+  border-radius: 10px;
+  padding: 11px 13px;
+  background: var(--white);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.gallery-admin-item input:focus,
+.gallery-admin-item select:focus {
+  border-color: var(--accent);
+}
 
 /* messages */
 .msg-list {

@@ -1,6 +1,53 @@
-import { useEffect, useState } from 'react'
-import { adminApi, isUnauthorized } from '../api.js'
+import { useEffect, useRef, useState } from 'react'
+import { adminApi, isUnauthorized, uploadImage } from '../api.js'
 import ImageInput from './ImageInput.jsx'
+import {
+  DEFAULT_INSTA_EYEBROW,
+  DEFAULT_INSTA_HEADING,
+  DEFAULT_INSTA_SUBTITLE,
+  DEFAULT_INSTA_POSTS,
+} from '../instagramDefaults.js'
+
+function PostImageRow({ token, value, onChange, onUnauthorized }) {
+  const fileRef = useRef(null)
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState(null)
+
+  const onFile = async (e) => {
+    const file = e.target.files && e.target.files[0]
+    if (!file) return
+    setBusy(true)
+    setError(null)
+    try {
+      const url = await uploadImage(token, file)
+      onChange(url)
+      if (fileRef.current) fileRef.current.value = ''
+    } catch (err) {
+      if (isUnauthorized(err)) onUnauthorized?.()
+      else setError(err.message)
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  return (
+    <div className="img-input">
+      <div className="img-input-row">
+        <input
+          type="text"
+          placeholder="Paste an image URL…"
+          value={value || ''}
+          onChange={(e) => onChange(e.target.value)}
+        />
+        <button type="button" className="btn btn-sm btn-outline" onClick={() => fileRef.current?.click()} disabled={busy}>
+          {busy ? 'Uploading…' : 'Upload'}
+        </button>
+        <input ref={fileRef} type="file" accept="image/*" hidden onChange={onFile} />
+      </div>
+      {error && <p className="form-status err">{error}</p>}
+    </div>
+  )
+}
 
 function Field({ label, children }) {
   return (
@@ -22,7 +69,16 @@ export default function AdminContent({ token, onUnauthorized }) {
     Promise.all([adminApi.getSite(token), adminApi.getMenu(token)])
       .then(([s, m]) => {
         if (live) {
-          setSite(s)
+          setSite({
+            ...s,
+            insta_eyebrow: s.insta_eyebrow || DEFAULT_INSTA_EYEBROW,
+            insta_heading: s.insta_heading || DEFAULT_INSTA_HEADING,
+            insta_subtitle: s.insta_subtitle || DEFAULT_INSTA_SUBTITLE,
+            insta_posts:
+              Array.isArray(s.insta_posts) && s.insta_posts.length
+                ? s.insta_posts
+                : DEFAULT_INSTA_POSTS.map((p) => ({ ...p })),
+          })
           setMenu(m)
         }
       })
@@ -64,6 +120,18 @@ export default function AdminContent({ token, onUnauthorized }) {
   }
   const removeGalleryItem = (i) => setGallery(site.gallery.filter((_, idx) => idx !== i))
   const addGalleryItem = () => setGallery([...site.gallery, { src: '', caption: '' }])
+
+  // instagram helpers
+  const updateInstaPost = (i, patch) =>
+    set('insta_posts', site.insta_posts.map((p, idx) => (idx === i ? { ...p, ...patch } : p)))
+  const moveInstaPost = (i, dir) => {
+    const next = [...site.insta_posts]
+    const [item] = next.splice(i, 1)
+    next.splice(i + dir, 0, item)
+    set('insta_posts', next)
+  }
+  const removeInstaPost = (i) => set('insta_posts', site.insta_posts.filter((_, idx) => idx !== i))
+  const addInstaPost = () => set('insta_posts', [...site.insta_posts, { src: '', url: '', tile: '' }])
 
   const save = async () => {
     setSaved(false)
@@ -157,6 +225,68 @@ export default function AdminContent({ token, onUnauthorized }) {
         </div>
       )}
       <button type="button" className="btn btn-outline" onClick={addGalleryItem}>+ Add gallery image</button>
+
+      <h3 className="block-title">Instagram section</h3>
+      <div className="grid-2">
+        <Field label="Eyebrow">
+          <input
+            placeholder={DEFAULT_INSTA_EYEBROW}
+            value={site.insta_eyebrow || ''}
+            onChange={(e) => set('insta_eyebrow', e.target.value)}
+          />
+        </Field>
+        <Field label="Heading (*text* becomes italic)">
+          <input
+            placeholder={DEFAULT_INSTA_HEADING}
+            value={site.insta_heading || ''}
+            onChange={(e) => set('insta_heading', e.target.value)}
+          />
+        </Field>
+      </div>
+      <Field label="Subtitle">
+        <textarea
+          rows={2}
+          placeholder={DEFAULT_INSTA_SUBTITLE}
+          value={site.insta_subtitle || ''}
+          onChange={(e) => set('insta_subtitle', e.target.value)}
+        />
+      </Field>
+      {site.insta_posts.length === 0 ? (
+        <p className="muted">No Instagram posts yet.</p>
+      ) : (
+        <div className="gallery-admin">
+          {site.insta_posts.map((p, i) => (
+            <div className="gallery-admin-item" key={i}>
+              <div className="gallery-admin-img">
+                {p.src ? <img src={p.src} alt="" /> : <span>No image</span>}
+              </div>
+              <PostImageRow
+                token={token}
+                value={p.src}
+                onChange={(v) => updateInstaPost(i, { src: v })}
+                onUnauthorized={onUnauthorized}
+              />
+              <input
+                placeholder="Post URL (instagram.com/p/…)"
+                value={p.url || ''}
+                onChange={(e) => updateInstaPost(i, { url: e.target.value })}
+              />
+              <select value={p.tile || ''} onChange={(e) => updateInstaPost(i, { tile: e.target.value })}>
+                <option value="">Regular tile</option>
+                <option value="insta-big">Big tile</option>
+                <option value="insta-wide">Wide tile</option>
+                <option value="insta-tall">Tall tile</option>
+              </select>
+              <div className="row-actions">
+                <button type="button" className="btn btn-xs" onClick={() => moveInstaPost(i, -1)} disabled={i === 0}>↑</button>
+                <button type="button" className="btn btn-xs" onClick={() => moveInstaPost(i, 1)} disabled={i === site.insta_posts.length - 1}>↓</button>
+                <button type="button" className="btn btn-xs btn-danger" onClick={() => removeInstaPost(i)}>Remove</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      <button type="button" className="btn btn-outline" onClick={addInstaPost}>+ Add Instagram post</button>
 
       <h3 className="block-title">Contact</h3>
       <div className="grid-2">
