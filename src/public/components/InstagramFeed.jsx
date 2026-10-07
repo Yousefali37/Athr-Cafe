@@ -11,6 +11,15 @@ import {
 
 const PER_PAGE = 5
 
+function tileClass(i, n) {
+  if (n === 5) return i === 0 ? 'insta-big' : i === 1 ? 'insta-wide' : ''
+  if (n === 4) return i < 2 ? 'insta-wide' : ''
+  if (n === 3) return i === 0 ? 'insta-big' : ''
+  if (n === 2) return i === 0 ? 'insta-wide' : ''
+  if (n === 1) return 'insta-full'
+  return ''
+}
+
 function EmText({ text }) {
   const parts = String(text || '').split(/\*([^*]+)\*/g)
   return parts.map((part, i) => (i % 2 ? <em key={i}>{part}</em> : <Fragment key={i}>{part}</Fragment>))
@@ -70,7 +79,7 @@ export default function InstagramFeed({ site }) {
           {visible.map((post, i) => (
             <motion.a
               key={i}
-              className={`insta-card ${i === 0 ? 'insta-big' : i === 1 ? 'insta-wide' : ''}`}
+              className={`insta-card ${tileClass(i, visible.length)}`}
               href={post.url || (handle || 'https://www.instagram.com/athr.cafe/')}
               target="_blank"
               rel="noreferrer noopener"
