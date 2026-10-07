@@ -212,7 +212,15 @@ export default function AdminContent({ token, onUnauthorized }) {
           {site.insta_posts.map((p, i) => (
             <div className="gallery-admin-item" key={i}>
               <div className="gallery-admin-img">
-                {p.src ? <img src={p.src} alt="" /> : <span>No image</span>}
+                {p.src ? (
+                  <img
+                    src={p.src}
+                    alt=""
+                    style={{ objectFit: p.fit || 'cover', objectPosition: p.pos || 'center' }}
+                  />
+                ) : (
+                  <span>No image</span>
+                )}
               </div>
               <PostImageRow
                 token={token}
@@ -225,6 +233,31 @@ export default function AdminContent({ token, onUnauthorized }) {
                 value={p.url || ''}
                 onChange={(e) => updateInstaPost(i, { url: e.target.value })}
               />
+              <Field label="Image fit">
+                <select
+                  value={p.fit || 'cover'}
+                  onChange={(e) => updateInstaPost(i, { fit: e.target.value })}
+                >
+                  <option value="cover">Cover — fill &amp; crop</option>
+                  <option value="contain">Contain — show full image</option>
+                </select>
+              </Field>
+              <Field label="Image position">
+                <select
+                  value={p.pos || 'center'}
+                  onChange={(e) => updateInstaPost(i, { pos: e.target.value })}
+                >
+                  <option value="center">Center</option>
+                  <option value="top">Top</option>
+                  <option value="bottom">Bottom</option>
+                  <option value="left">Left</option>
+                  <option value="right">Right</option>
+                  <option value="top left">Top left</option>
+                  <option value="top right">Top right</option>
+                  <option value="bottom left">Bottom left</option>
+                  <option value="bottom right">Bottom right</option>
+                </select>
+              </Field>
               <div className="row-actions">
                 <button type="button" className="btn btn-xs" onClick={() => moveInstaPost(i, -1)} disabled={i === 0}>↑</button>
                 <button type="button" className="btn btn-xs" onClick={() => moveInstaPost(i, 1)} disabled={i === site.insta_posts.length - 1}>↓</button>
