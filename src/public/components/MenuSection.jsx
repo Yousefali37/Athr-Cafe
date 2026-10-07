@@ -2,11 +2,24 @@ import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Reveal } from '../Reveal.jsx'
 import { EASE, fadeUp, stagger } from '../motion.js'
+import ProductModal from './ProductModal.jsx'
 
-function ProductCard({ product, focusId }) {
+function ProductCard({ product, focusId, onOpen }) {
   const isFocus = focusId && product.id === focusId
   return (
-    <motion.article variants={fadeUp} className={`product-card ${isFocus ? 'focus' : ''}`}>
+    <motion.article
+      variants={fadeUp}
+      className={`product-card ${isFocus ? 'focus' : ''}`}
+      role="button"
+      tabIndex={0}
+      onClick={() => onOpen(product)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onOpen(product)
+        }
+      }}
+    >
       <div className="product-media">
         {product.image ? (
           <img className="product-img" src={product.image} alt={product.name} loading="lazy" />
@@ -49,8 +62,21 @@ function countTop(top) {
 export default function MenuSection({ site, selection, focusId, onSelect, search, onSearchChange }) {
   const menu = useMemo(() => site.menu || [], [site])
   const [open, setOpen] = useState(false)
+  const [active, setActive] = useState(null) // { product, category }
 
   const tops = useMemo(() => menu.filter((c) => !c.parent_id), [menu])
+
+  // product id -> category breadcrumb ("Warm Coffee · Signature Latte")
+  const catLabel = useMemo(() => {
+    const m = new Map()
+    for (const top of menu) {
+      for (const sub of top.subcategories || []) {
+        for (const p of sub.products) m.set(p.id, `${top.name} · ${sub.name}`)
+      }
+      for (const p of top.products || []) m.set(p.id, top.name)
+    }
+    return m
+  }, [menu])
 
   // all product ids across the tree (for highlight + empty states)
   const allProducts = useMemo(() => {
@@ -255,7 +281,7 @@ export default function MenuSection({ site, selection, focusId, onSelect, search
               <motion.div key={`search-${q}`} {...productGridMotion}>
                 <div className="product-grid">
                   {filteredAll.map((p) => (
-                    <ProductCard key={p.id} product={p} focusId={null} />
+                    <ProductCard key={p.id} product={p} focusId={null} onOpen={(p) => setActive({ product: p, category: catLabel.get(p.id) })} />
                   ))}
                 </div>
               </motion.div>
@@ -280,7 +306,7 @@ export default function MenuSection({ site, selection, focusId, onSelect, search
                   <motion.div key={`sub-${selectedSub.id}`} {...productGridMotion}>
                     <div className="product-grid">
                       {selectedSub.products.map((p) => (
-                        <ProductCard key={p.id} product={p} focusId={focusId} />
+                        <ProductCard key={p.id} product={p} focusId={focusId} onOpen={(p) => setActive({ product: p, category: catLabel.get(p.id) })} />
                       ))}
                     </div>
                   </motion.div>
@@ -303,7 +329,7 @@ export default function MenuSection({ site, selection, focusId, onSelect, search
                         <motion.div key={`top-${top.id}`} {...productGridMotion}>
                           <div className="product-grid">
                             {top.products.map((p) => (
-                              <ProductCard key={p.id} product={p} focusId={focusId} />
+                              <ProductCard key={p.id} product={p} focusId={focusId} onOpen={(p) => setActive({ product: p, category: catLabel.get(p.id) })} />
                             ))}
                           </div>
                         </motion.div>
@@ -317,7 +343,7 @@ export default function MenuSection({ site, selection, focusId, onSelect, search
                           <motion.div key={`s-${top.id}-${g.id}`} {...productGridMotion}>
                             <div className="product-grid">
                               {g.products.map((p) => (
-                                <ProductCard key={p.id} product={p} focusId={focusId} />
+                                <ProductCard key={p.id} product={p} focusId={focusId} onOpen={(p) => setActive({ product: p, category: catLabel.get(p.id) })} />
                               ))}
                             </div>
                           </motion.div>
@@ -338,6 +364,12 @@ export default function MenuSection({ site, selection, focusId, onSelect, search
             </div>
           )}
         </div>
+
+        <ProductModal
+          product={active?.product || null}
+          category={active?.category}
+          onClose={() => setActive(null)}
+        />
       </div>
     </section>
   )
