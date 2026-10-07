@@ -1,6 +1,6 @@
 ﻿.insta-section {
   padding: 100px 0 40px;
-  background: var(--paper-2);
+  background: var(--paper);
 }
 .insta-section .section-head {
   display: flex;
@@ -35,7 +35,7 @@
   min-width: 0;
   border-radius: 18px;
   overflow: hidden;
-  background: var(--paper-2);
+  background: var(--paper);
   box-shadow: 0 10px 26px rgba(30, 26, 21, 0.08);
 }
 .insta-card.insta-big {
