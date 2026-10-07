@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Reveal } from '../Reveal.jsx'
 import { fadeUp, stagger } from '../motion.js'
 import {
@@ -8,6 +8,8 @@ import {
   DEFAULT_INSTA_SUBTITLE,
   DEFAULT_INSTA_POSTS,
 } from '../../instagramDefaults.js'
+
+const PER_PAGE = 6
 
 function EmText({ text }) {
   const parts = String(text || '').split(/\*([^*]+)\*/g)
@@ -25,6 +27,11 @@ export default function InstagramFeed({ site }) {
     Array.isArray(site?.insta_posts) && site.insta_posts.length
       ? site.insta_posts.filter((p) => p && p.src)
       : DEFAULT_INSTA_POSTS
+
+  const [page, setPage] = useState(0)
+  const pageCount = Math.ceil(posts.length / PER_PAGE)
+  const current = pageCount > 0 ? Math.min(page, pageCount - 1) : 0
+  const visible = pageCount > 1 ? posts.slice(current * PER_PAGE, current * PER_PAGE + PER_PAGE) : posts
 
   return (
     <section id="instagram" className="insta-section">
@@ -53,13 +60,14 @@ export default function InstagramFeed({ site }) {
         </div>
 
         <motion.div
+          key={current}
           className="insta-grid"
           variants={stagger(0.05, 0.06)}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
         >
-          {posts.map((post, i) => (
+          {visible.map((post, i) => (
             <motion.a
               key={i}
               className={`insta-card ${post.tile || ''}`}
@@ -78,6 +86,41 @@ export default function InstagramFeed({ site }) {
             </motion.a>
           ))}
         </motion.div>
+
+        {pageCount > 1 && (
+          <nav className="insta-pager" aria-label="Instagram posts pagination">
+            <button
+              type="button"
+              className="insta-page-btn"
+              onClick={() => setPage(current - 1)}
+              disabled={current === 0}
+              aria-label="Previous page"
+            >
+              ‹
+            </button>
+            {Array.from({ length: pageCount }, (_, i) => (
+              <button
+                key={i}
+                type="button"
+                className={`insta-page-dot ${i === current ? 'on' : ''}`}
+                onClick={() => setPage(i)}
+                aria-label={`Page ${i + 1}`}
+                aria-current={i === current ? 'page' : undefined}
+              >
+                {i + 1}
+              </button>
+            ))}
+            <button
+              type="button"
+              className="insta-page-btn"
+              onClick={() => setPage(current + 1)}
+              disabled={current === pageCount - 1}
+              aria-label="Next page"
+            >
+              ›
+            </button>
+          </nav>
+        )}
       </div>
     </section>
   )
