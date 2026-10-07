@@ -116,7 +116,7 @@ export default function AdminContent({ token, onUnauthorized }) {
     set('insta_posts', next)
   }
   const removeInstaPost = (i) => set('insta_posts', site.insta_posts.filter((_, idx) => idx !== i))
-  const addInstaPost = () => set('insta_posts', [...site.insta_posts, { src: '', url: '', tile: '' }])
+  const addInstaPost = () => set('insta_posts', [...site.insta_posts, { src: '', url: '' }])
 
   const save = async () => {
     setSaved(false)
@@ -225,12 +225,6 @@ export default function AdminContent({ token, onUnauthorized }) {
                 value={p.url || ''}
                 onChange={(e) => updateInstaPost(i, { url: e.target.value })}
               />
-              <select value={p.tile || ''} onChange={(e) => updateInstaPost(i, { tile: e.target.value })}>
-                <option value="">Regular tile</option>
-                <option value="insta-big">Big tile</option>
-                <option value="insta-wide">Wide tile</option>
-                <option value="insta-tall">Tall tile</option>
-              </select>
               <div className="row-actions">
                 <button type="button" className="btn btn-xs" onClick={() => moveInstaPost(i, -1)} disabled={i === 0}>↑</button>
                 <button type="button" className="btn btn-xs" onClick={() => moveInstaPost(i, 1)} disabled={i === site.insta_posts.length - 1}>↓</button>

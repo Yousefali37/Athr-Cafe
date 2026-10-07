@@ -9,7 +9,7 @@ import {
   DEFAULT_INSTA_POSTS,
 } from '../../instagramDefaults.js'
 
-const PER_PAGE = 6
+const PER_PAGE = 5
 
 function EmText({ text }) {
   const parts = String(text || '').split(/\*([^*]+)\*/g)
@@ -70,7 +70,7 @@ export default function InstagramFeed({ site }) {
           {visible.map((post, i) => (
             <motion.a
               key={i}
-              className={`insta-card ${post.tile || ''}`}
+              className={`insta-card ${i === 0 ? 'insta-big' : i === 1 ? 'insta-wide' : ''}`}
               href={post.url || (handle || 'https://www.instagram.com/athr.cafe/')}
               target="_blank"
               rel="noreferrer noopener"
