@@ -99,8 +99,8 @@ export default function MenuSection({ site, selection, focusId, onSelect, search
               Taste the <em>Menu</em>
             </h2>
             <p>
-              Pick a category, then a sub-category to narrow it down. Tap the active one again to
-              clear it. Every plate is made fresh in our Souq Waqif kitchen.
+              Pick a category to narrow it down. Tap the active one again to clear it. Every plate
+              is made fresh in our Souq Waqif kitchen.
             </p>
           </Reveal>
         </div>
@@ -138,19 +138,6 @@ export default function MenuSection({ site, selection, focusId, onSelect, search
                     <span>{selectedTop.name}</span>
                     <span className="active-chip-count">{countTop(selectedTop)}</span>
                     <span className="active-chip-x" aria-label="Clear category">
-                      ×
-                    </span>
-                  </button>
-                )}
-                {selectedSub && (
-                  <button
-                    type="button"
-                    className="active-chip sub"
-                    onClick={() => onSelect({ topId: selectedTop.id, subId: null })}
-                  >
-                    <span>{selectedSub.name}</span>
-                    <span className="active-chip-count">{countItems(selectedSub)}</span>
-                    <span className="active-chip-x" aria-label="Clear sub-category">
                       ×
                     </span>
                   </button>
@@ -238,28 +225,6 @@ export default function MenuSection({ site, selection, focusId, onSelect, search
                         )
                       })}
                     </div>
-
-                    {selectedTop && (
-                      <>
-                        <p className="filter-popup-label">Sub-category</p>
-                        <div className="chip-row">
-                          {selectedTop.subcategories.map((sub) => (
-                            <button
-                              key={sub.id}
-                              type="button"
-                              className={`chip ${selection.subId === sub.id ? 'active' : ''}`}
-                              onClick={() => {
-                                onSelect({ topId: selectedTop.id, subId: sub.id })
-                                setOpen(false)
-                              }}
-                            >
-                              {sub.name}
-                              <span className="chip-count">{countItems(sub)}</span>
-                            </button>
-                          ))}
-                        </div>
-                      </>
-                    )}
                   </div>
 
                   <div className="filter-popup-foot">
